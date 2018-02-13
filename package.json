@@ -1,7 +1,7 @@
 {
-  "name": "test262",
-  "version": "2.0.0",
-  "description": "Test262 tests conformance to the continually maintained draft future ECMAScript standard found at http://tc39.github.io/ecma262/ , together with any Stage 3 or later TC39 proposals.",
+  "name": "@gerhobbelt/test262",
+  "version": "2.0.0-1",
+  "description": "(Fork/Clone: NPM scoped package for use with esprima/recast) Test262 tests conformance to the continually maintained draft future ECMAScript standard found at http://tc39.github.io/ecma262/ , together with any Stage 3 or later TC39 proposals.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tc39/test262.git"
@@ -10,6 +10,9 @@
   "bugs": {
     "url": "https://github.com/tc39/test262/issues"
   },
-  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "pub": "npm publish --access public"
+  },
   "homepage": "https://github.com/tc39/test262#readme"
 }
