@@ -72,6 +72,19 @@ String.prototype.trimStart
 # https://github.com/tc39/proposal-numeric-separator
 numeric-separator-literal
 
+# String.prototype.matchAll
+# https://github.com/tc39/proposal-string-matchall
+String.prototype.matchAll
+Symbol.matchAll
+
+# ECMAScript ⊃ JSON
+# https://github.com/tc39/proposal-json-superset
+json-superset
+
+# Intl.Locale
+# https://github.com/tc39/proposal-intl-locale
+Intl.Locale
+
 # Standard language features
 #
 # Language features that have been included in a published version of the
@@ -97,14 +110,15 @@ DataView.prototype.getInt8
 DataView.prototype.getUint16
 DataView.prototype.getUint32
 DataView.prototype.setUint8
-default-arg
 default-parameters
 destructuring-assignment
 destructuring-binding
 for-of
+Float32Array
 Float64Array
 generators
 Int8Array
+Int32Array
 let
 Map
 new.target
@@ -136,6 +150,7 @@ TypedArray
 u180e
 Uint8Array
 Uint16Array
+Uint8ClampedArray
 WeakMap
 WeakSet
 
