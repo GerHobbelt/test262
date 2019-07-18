@@ -7,6 +7,10 @@
 #
 # https://github.com/tc39/process-document
 
+# Missing checks in Proxy internal methods
+# https://github.com/tc39/ecma262/pull/666
+proxy-missing-checks
+
 # Promise.allSettled
 # https://github.com/tc39/proposal-promise-allSettled
 Promise.allSettled
@@ -100,6 +104,18 @@ Intl.DateTimeFormat-datetimestyle
 # https://github.com/tc39/proposal-intl-DateTimeFormat-formatRange
 Intl.DateTimeFormat-formatRange
 
+# Intl.DateTimeFormat: add 'dayPeriod' option
+# https://github.com/tc39/ecma402/pull/346
+Intl.DateTimeFormat-dayPeriod
+
+# Intl.DateTimeFormat: add 'quarter' option
+# https://github.com/tc39/ecma402/pull/346
+Intl.DateTimeFormat-quarter
+
+# Intl.DateTimeFormat: add 'fractionalSecondDigits' option
+# https://github.com/tc39/ecma402/pull/347
+Intl.DateTimeFormat-fractionalSecondDigits
+
 # Global
 # https://github.com/tc39/proposal-global
 globalThis
@@ -111,6 +127,11 @@ export-star-as-namespace-from-module
 # import.meta
 # https://github.com/tc39/proposal-import-meta
 import.meta
+
+# WeakRef
+# https://github.com/tc39/proposal-weakref
+WeakRef
+FinalizationGroup
 
 ## Standard language features
 #
@@ -202,3 +223,4 @@ WeakSet
 # object, go here.
 
 IsHTMLDDA
+host-gc-required
