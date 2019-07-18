@@ -37,6 +37,8 @@ from lib.checks.harness import CheckHarness
 from lib.checks.license import CheckLicense
 from lib.checks.negative import CheckNegative
 from lib.checks.filename import CheckFileName
+from lib.checks.nopadding import CheckNoPadding
+from lib.checks.flags import CheckFlags
 from lib.eprint import eprint
 import lib.frontmatter
 import lib.exceptions
@@ -57,7 +59,9 @@ checks = [
     CheckHarnessFeatures(),
     CheckHarness(),
     CheckLicense(),
-    CheckNegative()
+    CheckNegative(),
+    CheckNoPadding(),
+    CheckFlags(),
 ]
 
 def lint(file_names):

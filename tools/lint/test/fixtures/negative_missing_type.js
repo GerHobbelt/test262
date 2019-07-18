@@ -9,4 +9,6 @@ negative:
   phase: early
 ---*/
 
+$DONOTEVALUATE();
+
 !!!
