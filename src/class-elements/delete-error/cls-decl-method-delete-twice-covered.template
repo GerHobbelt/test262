@@ -3,9 +3,12 @@
 
 /*---
 esid: sec-class-definitions-static-semantics-early-errors
-path: language/statements/class/err-method-delete-twice-covered-
+path: language/statements/class/syntax/early-errors/delete/method-delete-twice-covered-
 name: in method, recursively covered
 info: |
+  This file must never use the onlyStrict flag as the strict mode should always
+  be observed inside class bodies.
+
   Static Semantics: Early Errors
 
     UnaryExpression : delete UnaryExpression
@@ -21,15 +24,13 @@ info: |
     CoverParenthesizedExpressionAndArrowParameterList ultimately derives a
     phrase that, if used in place of UnaryExpression, would produce a
     Syntax Error according to these rules. This rule is recursively applied.
-
-flags: [onlyStrict]
 features: [class, class-fields-private]
 negative:
   type: SyntaxError
   phase: parse
 ---*/
 
-throw "Test262: This statement should not be evaluated.";
+$DONOTEVALUATE();
 
 class C {
   #x;

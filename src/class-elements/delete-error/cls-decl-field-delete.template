@@ -3,9 +3,12 @@
 
 /*---
 esid: sec-class-definitions-static-semantics-early-errors
-path: language/statements/class/err-field-delete-
+path: language/statements/class/syntax/early-errors/delete/field-delete-
 name: in field
 info: |
+  This file must never use the onlyStrict flag as the strict mode should always
+  be observed inside class bodies.
+
   Static Semantics: Early Errors
 
     UnaryExpression : delete UnaryExpression
@@ -15,15 +18,13 @@ info: |
     PrimaryExpression : IdentifierReference ,
     MemberExpression : MemberExpression.PrivateName , or
     CallExpression : CallExpression.PrivateName .
-
-flags: [onlyStrict]
 features: [class, class-fields-private, class-fields-public]
 negative:
   type: SyntaxError
   phase: parse
 ---*/
 
-throw "Test262: This statement should not be evaluated.";
+$DONOTEVALUATE();
 
 class C {
   #x;
