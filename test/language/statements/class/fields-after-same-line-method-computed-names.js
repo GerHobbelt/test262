@@ -1,10 +1,10 @@
 // This file was procedurally generated from the following sources:
-// - src/class-fields/computed-names.case
-// - src/class-fields/productions/cls-decl-after-same-line-method.template
+// - src/class-elements/computed-names.case
+// - src/class-elements/productions/cls-decl-after-same-line-method.template
 /*---
 description: Computed property names (field definitions after a method in the same line)
 esid: prod-FieldDefinition
-features: [computed-property-names, class, class-fields-public]
+features: [class-fields-public, computed-property-names, class]
 flags: [generated]
 includes: [propertyHelper.js]
 info: |

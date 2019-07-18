@@ -1,10 +1,10 @@
 // This file was procedurally generated from the following sources:
-// - src/class-fields/rs-field-identifier-initializer.case
-// - src/class-fields/productions/cls-decl-after-same-line-static-gen.template
+// - src/class-elements/rs-field-identifier-initializer.case
+// - src/class-elements/productions/cls-decl-after-same-line-static-gen.template
 /*---
 description: Valid FieldDefinition (field definitions after a static generator in the same line)
 esid: prod-FieldDefinition
-features: [class-fields-private, generators, class, class-fields-public]
+features: [class-fields-public, generators, class]
 flags: [generated]
 includes: [propertyHelper.js]
 info: |

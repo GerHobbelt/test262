@@ -1,10 +1,10 @@
 // This file was procedurally generated from the following sources:
-// - src/class-fields/literal-names-asi.case
-// - src/class-fields/productions/cls-decl-after-same-line-static-gen.template
+// - src/class-elements/literal-names-asi.case
+// - src/class-elements/productions/cls-decl-after-same-line-static-gen.template
 /*---
 description: Literal property names with ASI (field definitions after a static generator in the same line)
 esid: prod-FieldDefinition
-features: [generators, class, class-fields-public]
+features: [class-fields-public, generators, class]
 flags: [generated]
 includes: [propertyHelper.js]
 info: |

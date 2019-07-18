@@ -1,10 +1,10 @@
 // This file was procedurally generated from the following sources:
-// - src/class-fields/computed-names.case
-// - src/class-fields/productions/cls-expr-after-same-line-async-method.template
+// - src/class-elements/computed-names.case
+// - src/class-elements/productions/cls-expr-after-same-line-async-method.template
 /*---
 description: Computed property names (field definitions after an async method in the same line)
 esid: prod-FieldDefinition
-features: [computed-property-names, class, class-fields-public, async-functions]
+features: [class-fields-public, computed-property-names, class, async-functions]
 flags: [generated, async]
 includes: [propertyHelper.js]
 info: |

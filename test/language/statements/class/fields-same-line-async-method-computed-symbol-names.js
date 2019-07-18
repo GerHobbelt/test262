@@ -1,10 +1,10 @@
 // This file was procedurally generated from the following sources:
-// - src/class-fields/computed-symbol-names.case
-// - src/class-fields/productions/cls-decl-after-same-line-async-method.template
+// - src/class-elements/computed-symbol-names.case
+// - src/class-elements/productions/cls-decl-after-same-line-async-method.template
 /*---
 description: Computed property symbol names (field definitions after an async method in the same line)
 esid: prod-FieldDefinition
-features: [Symbol, computed-property-names, class, class-fields-public, async-functions]
+features: [class-fields-public, Symbol, computed-property-names, class, async-functions]
 flags: [generated, async]
 includes: [propertyHelper.js]
 info: |

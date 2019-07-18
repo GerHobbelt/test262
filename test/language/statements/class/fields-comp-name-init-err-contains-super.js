@@ -1,10 +1,10 @@
 // This file was procedurally generated from the following sources:
-// - src/class-fields/init-err-contains-super.case
-// - src/class-fields/initializer-error/cls-decl-fields-comp-name.template
+// - src/class-elements/init-err-contains-super.case
+// - src/class-elements/initializer-error/cls-decl-fields-comp-name.template
 /*---
 description: Syntax error if `super()` used in class field (computed ClassElementName)
 esid: sec-class-definitions-static-semantics-early-errors
-features: [class, class-fields-public]
+features: [class, class-fields-public, computed-property-names]
 flags: [generated]
 negative:
   phase: parse

@@ -1,10 +1,10 @@
 // This file was procedurally generated from the following sources:
-// - src/class-fields/string-literal-names.case
-// - src/class-fields/productions/cls-decl-after-same-line-async-method.template
+// - src/class-elements/string-literal-names.case
+// - src/class-elements/productions/cls-decl-after-same-line-async-method.template
 /*---
 description: String literal names (field definitions after an async method in the same line)
 esid: prod-FieldDefinition
-features: [class, class-fields-public, async-functions]
+features: [class-fields-public, class, async-functions]
 flags: [generated, async]
 includes: [propertyHelper.js]
 info: |

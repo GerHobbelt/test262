@@ -1,10 +1,10 @@
 // This file was procedurally generated from the following sources:
-// - src/class-fields/rs-field-identifier-initializer.case
-// - src/class-fields/productions/cls-expr-regular-definitions.template
+// - src/class-elements/rs-field-identifier-initializer.case
+// - src/class-elements/productions/cls-expr-regular-definitions.template
 /*---
 description: Valid FieldDefinition (regular fields defintion)
 esid: prod-FieldDefinition
-features: [class-fields-private, class, class-fields-public]
+features: [class-fields-public, class]
 flags: [generated]
 info: |
     

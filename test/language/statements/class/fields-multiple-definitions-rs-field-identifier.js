@@ -1,10 +1,10 @@
 // This file was procedurally generated from the following sources:
-// - src/class-fields/rs-field-identifier.case
-// - src/class-fields/productions/cls-decl-multiple-definitions.template
+// - src/class-elements/rs-field-identifier.case
+// - src/class-elements/productions/cls-decl-multiple-definitions.template
 /*---
 description: Valid FieldDefinition (multiple fields definitions)
 esid: prod-FieldDefinition
-features: [class-fields-private, class, class-fields-public]
+features: [class-fields-public, class]
 flags: [generated]
 includes: [propertyHelper.js]
 info: |
