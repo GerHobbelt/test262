@@ -8,13 +8,13 @@ function assert(a, message) {
 function lshift(y) {
     let out = 1n;
     for (let i = 0; i < y; i++) {
-        out *= 2n;
+        out *= 340282366920938463463374607431768211456n;
     }
 
     return out;
 }
 
-let a = lshift(16384 * 63);
+let a = lshift(8064);
 for (let i = 0; i < 256; i++) {
     a *= 18446744073709551615n;
 }
