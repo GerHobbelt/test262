@@ -1,6 +1,6 @@
 {
   "name": "@gerhobbelt/test262",
-  "version": "4.0.0-5",
+  "version": "4.0.0-6",
   "description": "(Fork/Clone: NPM scoped package for use with esprima/recast) Test262 tests conformance to the continually maintained draft future ECMAScript standard found at http://tc39.github.io/ecma262/ , together with any Stage 3 or later TC39 proposals.",
   "repository": {
     "type": "git",
@@ -11,15 +11,12 @@
     "url": "https://github.com/tc39/test262/issues"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0",
+    "test": "bash ./tools/scripts/ci_test.sh",
     "pub": "npm publish --access public"
   },
   "homepage": "https://github.com/tc39/test262#readme",
   "devDependencies": {
-    "jsvu": "^1.6.1",
-    "test262-harness": "^4.7.0"
-  },
-  "scripts": {
-    "test": "./tools/scripts/ci_test.sh"
+    "jsvu": "1.8.2",
+    "test262-harness": "6.4.0"
   }
 }
