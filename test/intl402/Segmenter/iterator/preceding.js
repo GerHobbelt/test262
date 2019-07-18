@@ -22,14 +22,13 @@ const tests = [
   [text.length, text.length - 1],
 ];
 
-for (const [input, position] of tests) {
-  assert.sameValue(iter.preceding(0 | input), false);
-  assert.sameValue(iter.position, position, String(input));
+for (const [input, index] of tests) {
+  assert.sameValue(iter.preceding(input), false);
+  assert.sameValue(iter.index, index, String(input));
 }
 
 assert.throws(RangeError, () => iter.preceding("ABC"));
 assert.throws(RangeError, () => iter.preceding(null));
-assert.throws(RangeError, () => iter.preceding(1.4));
 assert.throws(RangeError, () => iter.preceding(-3));
 
 // 1.5.3.3 %SegmentIteratorPrototype%.preceding( [ from ] )

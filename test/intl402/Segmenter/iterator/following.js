@@ -24,9 +24,9 @@ const tests = [
   [text.length - 1, text.length],
 ];
 
-for (const [input, position] of tests) {
-  assert.sameValue(iter.following(0 | input), false);
-  assert.sameValue(iter.position, position, String(input));
+for (const [input, index] of tests) {
+  assert.sameValue(iter.following(input), false);
+  assert.sameValue(iter.index, index, String(input));
 }
 
 assert.throws(RangeError, () => iter.following(-3));
