@@ -77,6 +77,10 @@ numeric-separator-literal
 String.prototype.matchAll
 Symbol.matchAll
 
+# Symbol.prototype.description
+# https://github.com/tc39/proposal-symbol-description
+Symbol.prototype.description
+
 # ECMAScript ⊃ JSON
 # https://github.com/tc39/proposal-json-superset
 json-superset
@@ -84,6 +88,18 @@ json-superset
 # Intl.Locale
 # https://github.com/tc39/proposal-intl-locale
 Intl.Locale
+
+# Intl.RelativeTimeFormat
+# https://github.com/tc39/proposal-intl-relative-time
+Intl.RelativeTimeFormat
+
+# Global
+# https://github.com/tc39/proposal-global
+global
+
+# `export * as namespace from module` consensus PR
+# https://github.com/tc39/ecma262/pull/1174
+export-star-as-namespace-from-module
 
 # Standard language features
 #
@@ -129,6 +145,7 @@ Reflect.construct
 Reflect.set
 Reflect.setPrototypeOf
 Set
+String.fromCodePoint
 String.prototype.endsWith
 String.prototype.includes
 super
