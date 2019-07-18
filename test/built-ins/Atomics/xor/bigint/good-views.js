@@ -4,7 +4,7 @@
 esid: sec-atomics.xor
 description: Test Atomics.xor on arrays that allow atomic operations
 includes: [testAtomics.js, testBigIntTypedArray.js]
-features: [ArrayBuffer, arrow-function, Atomics, BigInt, DataView, for-of, let, SharedArrayBuffer, TypedArray]
+features: [ArrayBuffer, Atomics, BigInt, DataView, SharedArrayBuffer, Symbol, TypedArray]
 ---*/
 // Make it interesting - use non-zero byteOffsets and non-zero indexes.
 // And again
@@ -35,7 +35,7 @@ testWithBigIntTypedArrayConstructors(function(TA) {
   );
 
   assert.sameValue(
-    Atomics.xor(view, 8, 0xF0F0F0F0),
+    Atomics.xor(view, 8, 0xF0F0F0F0n),
     control[0],
     'Atomics.xor(view, 8, 0xF0F0F0F0) returns the value of `control[0]` (0x66666666n)'
   );

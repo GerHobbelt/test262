@@ -18,24 +18,34 @@ includes: [atomicsHelper.js]
 features: [Atomics, BigInt, SharedArrayBuffer, TypedArray]
 ---*/
 
-const value = 42n;
+const RUNNING = 1;
+
+const value = "42n";
 
 $262.agent.start(`
   $262.agent.receiveBroadcast(function(sab) {
     const i64a = new BigInt64Array(sab);
-    Atomics.add(i64a, 1, 1);
+    Atomics.add(i64a, ${RUNNING}, 1n);
+
     $262.agent.report(Atomics.store(i64a, 0, ${value}));
-    $262.agent.report(Atomics.wait(i64a, 0, 0));
+    $262.agent.report(Atomics.wait(i64a, 0, 0n));
     $262.agent.leaving();
   });
 `);
 
 const i64a = new BigInt64Array(
-  new SharedArrayBuffer(BigInt64Array.BYTES_PER_ELEMENT * 8)
+  new SharedArrayBuffer(BigInt64Array.BYTES_PER_ELEMENT * 4)
 );
 
+// NB: We don't actually explicitly need to wait for the agent to start in this
+// test case, we only do it for consistency with other test cases which do
+// require the main agent to wait and yield control.
+
 $262.agent.broadcast(i64a.buffer);
-$262.agent.waitUntil(i64a, 1, 1);
+$262.agent.waitUntil(i64a, RUNNING, 1n);
+
+// Try to yield control to ensure the agent actually started to wait.
+$262.agent.tryYield();
 
 assert.sameValue(
   $262.agent.getReport(),
