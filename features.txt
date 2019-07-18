@@ -7,6 +7,10 @@
 #
 # https://github.com/tc39/process-document
 
+# Object.fromEntries
+# https://github.com/tc39/proposal-object-from-entries
+Object.fromEntries
+
 # BigInt
 # https://github.com/tc39/proposal-bigint
 BigInt
@@ -103,7 +107,7 @@ Intl.Segmenter
 
 # Global
 # https://github.com/tc39/proposal-global
-global
+globalThis
 
 # `export * as namespace from module` consensus PR
 # https://github.com/tc39/ecma262/pull/1174
