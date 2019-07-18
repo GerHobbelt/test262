@@ -14,6 +14,7 @@ const tests = [
   [88776655n, { "maximumSignificantDigits": 4 }, "88,780,000"],
   [88776655n, { "maximumSignificantDigits": 4, "style": "percent" }, "8,878,000,000%"],
   [88776655n, { "minimumFractionDigits": 3 }, "88,776,655.000"],
+  [90071992547409910n, undefined, "90,071,992,547,409,910"],
 ];
 
 for (const [bigint, options, expected] of tests) {
