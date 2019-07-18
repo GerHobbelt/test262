@@ -10,10 +10,6 @@
   "bugs": {
     "url": "https://github.com/tc39/test262/issues"
   },
-  "scripts": {
-    "test": "bash ./tools/scripts/ci_test.sh",
-    "pub": "npm publish --access public"
-  },
   "homepage": "https://github.com/tc39/test262#readme",
   "devDependencies": {
     "jsvu": "1.7.1",
@@ -22,6 +18,7 @@
   "scripts": {
     "ci": "./tools/scripts/ci_test.sh",
     "test": "test262-harness",
+    "pub": "npm publish --access public",
     "diff": "git diff --diff-filter ACMR --name-only master.. -- test/",
     "test:diff": "npm run test:diff:v8 && npm run test:diff:spidermonkey && npm run test:diff:chakra && npm run test:diff:javascriptcore",
     "test:diff:v8": "test262-harness -t 8 --hostType=d8 --hostPath=v8 $(npm run diff)",
