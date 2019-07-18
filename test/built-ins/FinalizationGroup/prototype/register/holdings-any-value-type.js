@@ -30,8 +30,6 @@ assert.sameValue(fg.register(target, false), undefined, 'false');
 assert.sameValue(fg.register(target, true), undefined, 'true');
 assert.sameValue(fg.register(target, Symbol()), undefined, 'symbol');
 assert.sameValue(fg.register(target, {}), undefined, 'object');
-assert.sameValue(fg.register(target, target), undefined, 'same as target');
 assert.sameValue(fg.register(target, fg), undefined, 'same as fg instance');
-assert.sameValue(fg.register(target, target, target), undefined, 'target, and same as unregisterToken');
 assert.sameValue(fg.register(target, 1), undefined, 'number');
 assert.sameValue(fg.register(target, 'holdings'), undefined, 'string');
