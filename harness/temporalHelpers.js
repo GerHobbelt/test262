@@ -942,13 +942,43 @@ var TemporalHelpers = {
         return "dateadd-undef-options";
       }
 
-      dateAdd(one, two, options) {
+      dateAdd(date, duration, options) {
         this.dateAddCallCount++;
         assert.sameValue(options, undefined, "dateAdd shouldn't be called with options");
-        return super.dateAdd(one, two, options);
+        return super.dateAdd(date, duration, options);
       }
     }
     return new CalendarDateAddUndefinedOptions();
+  },
+
+  /*
+   * A custom calendar that asserts its dateAdd() method is called with a
+   * PlainDate instance. Optionally, it also asserts that the PlainDate instance
+   * is the specific object `this.specificPlainDate`, if it is set by the
+   * calling code.
+   */
+  calendarDateAddPlainDateInstance() {
+    class CalendarDateAddPlainDateInstance extends Temporal.Calendar {
+      constructor() {
+        super("iso8601");
+        this.dateAddCallCount = 0;
+        this.specificPlainDate = undefined;
+      }
+
+      toString() {
+        return "dateadd-plain-date-instance";
+      }
+
+      dateAdd(date, duration, options) {
+        this.dateAddCallCount++;
+        assert(date instanceof Temporal.PlainDate, "dateAdd() should be called with a PlainDate instance");
+        if (this.dateAddCallCount === 1 && this.specificPlainDate) {
+          assert.sameValue(date, this.specificPlainDate, `dateAdd() should be called first with the specific PlainDate instance ${this.specificPlainDate}`);
+        }
+        return super.dateAdd(date, duration, options);
+      }
+    }
+    return new CalendarDateAddPlainDateInstance();
   },
 
   /*
