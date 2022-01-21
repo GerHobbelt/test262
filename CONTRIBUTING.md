@@ -6,6 +6,16 @@
 - https://github.com/tc39/ecma262/pulls?q=is%3Apr+is%3Aopen+label%3A%22needs+tests%22
   + This is a list of the "needs tests" PRs for changes to the specification.
 
+## Acceptable Tests
+
+Any test that execercises observable grammar or semantics, originating with citable, normative text in the latest draft of the [ECMAScript Language Specification](https://tc39.es/ecma262/), the [ECMAScript Internationalization API Specification](https://tc39.es/ecma402/), the [The JSON Data
+Interchange Syntax](https://ecma-international.org/publications/standards/Ecma-404.htm), a [Stage 3](https://github.com/tc39/proposals#stage-3) proposal or a Pull Request which makes a normative change to any of those specifications.
+
+## Unacceptable Tests
+
+Any test that restricts potentially valid extensions to the ECMAScript Language will not be accepted. Implementations are allowed to extend the language in any way that does not contradict the normative grammar specification, nor violate the specification's [Forbidden Extensions](https://tc39.es/ecma262/#sec-forbidden-extensions) section, which clearly lists the only exceptions to this rule.
+
+
 ## Test Case Names
 
 Test cases should be created in files that are named to identify the feature or API that's being tested.
@@ -237,7 +247,7 @@ Function | Purpose
 `assert.sameValue(actual, expected, message)` | throw a new Test262Error instance if the first two arguments are not [the same value](https://tc39.github.io/ecma262/#sec-samevalue); accepts an optional string message for use in creating the error
 `assert.notSameValue(actual, unexpected, message)` | throw a new Test262Error instance if the first two arguments are [the same value](https://tc39.github.io/ecma262/#sec-samevalue); accepts an optional string message for use in creating the error
 `assert.throws(expectedErrorConstructor, fn, message)` | throw a new Test262Error instance if the provided function does not throw an error, or if the constructor of the value thrown does not match the provided constructor
-`$DONOTEVALUATE()` | throw an exception if the code gets evaluated. This is useful for [negative test cases for parsing errors](#handling-errors-and-negative-test-cases).
+`$DONOTEVALUATE()` | throw an exception if the code gets evaluated. This may only be used in [negative test cases for parsing errors](#handling-errors-and-negative-test-cases).
 `throw "Test262: This statement should not be evaluated.";` | throw an exception if the code gets evaluated. Use this if the test file has the `raw` flag and it's a negative test case for parsing error.
 `$ERROR(message)` | construct a Test262Error object and throw it <br>**DEPRECATED** -- Do not use in new tests. Use `assert`, `assert.*`, or `throw new Test262Error` instead.
 
@@ -250,10 +260,10 @@ function Test262Error(message) {
 
 ## Rules For Module `_FIXTURE.js` Files
 
-The [Module section of INTERPRETING.md](https://github.com/tc39/test262/blob/master/INTERPRETING.md#modules) states that `_FIXTURE.js` files will not have have Realm modifications applied. In practice, this means that code in `_FIXTURE.js` files must abide by the following rules: 
+The [Module section of INTERPRETING.md](https://github.com/tc39/test262/blob/HEAD/INTERPRETING.md#modules) states that `_FIXTURE.js` files will not have have Realm modifications applied. In practice, this means that code in `_FIXTURE.js` files must abide by the following rules: 
 
-- **MUST NOT** refer to, or make use of any [Test262-Defined Bindings](https://github.com/tc39/test262/blob/master/INTERPRETING.md#test262-defined-bindings) in any way. 
-- **MUST NOT** refer to, or make use of any [Host-Defined Functions](https://github.com/tc39/test262/blob/master/INTERPRETING.md#host-defined-functions) in any way. 
+- **MUST NOT** refer to, or make use of any [Test262-Defined Bindings](https://github.com/tc39/test262/blob/HEAD/INTERPRETING.md#test262-defined-bindings) in any way. 
+- **MUST NOT** refer to, or make use of any [Host-Defined Functions](https://github.com/tc39/test262/blob/HEAD/INTERPRETING.md#host-defined-functions) in any way. 
 
 ## Handling Errors and Negative Test Cases
 
@@ -375,7 +385,8 @@ Test cases and test templates specify meta-data using the same YAML frontmatter 
 ### test cases (`*.case`)
 Field | Description
 ------|-------------
-`template` | name of the sub-directory to locate templates for this test
+`template` | a template file, directory or glob expression.
+`templates` | a list of template file, directory or glob expressions.
 `desc` | see the frontmatter definition of the "desc" field. The generated test will have a have final "desc" value which is this text appended with the test template's "name" field in parentheses.
 `info` | see the frontmatter definition of the "info" field. The generated test will have a have final "info" value which is this text concatenated at the end of the test templates's "info" text.
 `features` | see the frontmatter definition of the "features" field. The generated test will have a final feature list in combination with the template's feature field.
@@ -407,3 +418,17 @@ The executable located at `tools/generation/generator.py` offers additional cont
     ./tools/generation/generator.py --help
 
 Tests expressed with this convention are built automatically following the source files' acceptance into the project. Patches should **not** include assets built from these sources.
+
+
+## Reporting Bugs to Implementers
+
+- [ChakraCore](https://github.com/microsoft/ChakraCore/issues/new)
+- [engine262](https://github.com/engine262/engine262/issues/new)
+- [Hermes](https://github.com/facebook/hermes/issues/new?labels%5B%5D=need+triage&labels%5B%5D=bug&template=01_bug_report.md&title=)
+- [JavaScriptCore](https://bugs.webkit.org/enter_bug.cgi?product=WebKit&component=JavaScriptCore)
+- [Moddable XS](https://github.com/Moddable-OpenSource/moddable/issues/new?assignees=&labels=&template=bug_report.md&title=)
+- [QuickJS](https://github.com/bellard/quickjs/issues/new)
+- [SpiderMonkey](https://bugzilla.mozilla.org/enter_bug.cgi?product=Core&component=JavaScript%20Engine)
+- [V8](https://bugs.chromium.org/p/v8/issues/entry)
+
+

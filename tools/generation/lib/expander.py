@@ -1,7 +1,7 @@
 # Copyright (C) 2016 the V8 project authors. All rights reserved.
 # This code is governed by the BSD license found in the LICENSE file.
 
-import re, os
+import glob, os, re
 
 from .case import Case
 from .template import Template
@@ -16,10 +16,18 @@ class Expander:
 
     def _load_templates(self, template_class, encoding):
         directory = os.path.join(self.case_dir, template_class)
-        file_names = map(
-            lambda x: os.path.join(directory, x),
-            filter(self.is_template_file, os.listdir(directory))
-        )
+        file_names = []
+
+        for expanded_directory in glob.glob(directory):
+            try:
+                file_names.extend(
+                    map(
+                        lambda x: os.path.join(expanded_directory, x),
+                        filter(self.is_template_file, os.listdir(expanded_directory))
+                    )
+                )
+            except:
+                file_names.append(expanded_directory)
 
         self.templates[template_class] = [
             Template(x, encoding) for x in file_names
@@ -32,7 +40,7 @@ class Expander:
         return self.templates[template_class]
 
     def is_template_file(self, filename):
-      return re.match(templateFilenamePattern, filename)
+        return re.match(templateFilenamePattern, filename)
 
     def list_cases(self):
         for name in os.listdir(self.case_dir):
@@ -52,9 +60,17 @@ class Expander:
 
     def expand_case(self, file_name, encoding):
         case = Case(file_name, encoding)
+        localtemplates = [];
 
-        template_class = case.attribs['meta']['template']
-        templates = self.templates.get(template_class)
+        if 'template' in case.attribs['meta']:
+            localtemplates.append(case.attribs['meta']['template'])
 
-        for template in self._get_templates(template_class, encoding):
-            yield template.expand(file_name, os.path.basename(file_name[:-5]), case.attribs, encoding)
+        if 'templates' in case.attribs['meta']:
+            localtemplates.extend(case.attribs['meta']['templates'])
+
+        for t in localtemplates:
+            template_class = t
+            templates = self.templates.get(template_class)
+
+            for template in self._get_templates(template_class, encoding):
+                yield template.expand(file_name, os.path.basename(file_name[:-5]), case.attribs, encoding)
