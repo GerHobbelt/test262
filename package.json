@@ -12,8 +12,8 @@
   },
   "homepage": "https://github.com/tc39/test262#readme",
   "devDependencies": {
-    "jsvu": "1.7.1",
-    "test262-harness": "6.2.0"
+    "esvu": "^1.0.0",
+    "test262-harness": "^6.2.0"
   },
   "scripts": {
     "ci": "./tools/scripts/ci_test.sh",
