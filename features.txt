@@ -133,6 +133,39 @@ import.meta
 WeakRef
 FinalizationGroup
 
+# Optional Chaining
+# https://github.com/tc39/proposal-optional-chaining
+optional-chaining
+
+# Top Level Await
+# https://github.com/tc39/proposal-top-level-await
+top-level-await
+
+# RegExp Match Array Indices
+# https://github.com/tc39/proposal-regexp-match-indices
+regexp-match-indices
+
+# Nullish Coalesce Expression
+# https://github.com/tc39/proposal-nullish-coalescing
+coalesce-expression
+
+# Intl.DisplayNames
+# https://github.com/tc39-transfer/proposal-intl-displaynames
+Intl.DisplayNames
+
+# Promise.any
+# https://github.com/tc39/proposal-promise-any
+Promise.any
+AggregateError
+
+# String.prototype.replaceAll
+# https://github.com/tc39/proposal-string-replaceall
+String.prototype.replaceAll
+
+# Enumeration order for for-in
+# https://github.com/tc39/proposal-for-in-order
+for-in-order
+
 ## Standard language features
 #
 # Language features that have been included in a published version of the

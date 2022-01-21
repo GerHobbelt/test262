@@ -8,4 +8,4 @@ features: [TypedArray]
 includes: [testTypedArray.js]
 ---*/
 
-// empty
+intArrayConstructors;

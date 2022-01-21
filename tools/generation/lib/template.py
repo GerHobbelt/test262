@@ -5,9 +5,9 @@ import os, re
 import codecs, yaml
 from collections import OrderedDict
 
-from util.find_comments import find_comments
-from util.parse_yaml import parse_yaml
-from test import Test
+from .util.find_comments import find_comments
+from .util.parse_yaml import parse_yaml
+from .test import Test
 
 indentPattern = re.compile(r'^(\s*)')
 interpolatePattern = re.compile(r'\{\s*(\S+)\s*\}')
@@ -154,20 +154,20 @@ class Template:
         features += self.attribs['meta'].get('features', [])
         features = list(OrderedDict.fromkeys(features))
         if len(features):
-            lines += ['features: ' + re.sub('\n\s*', ' ', yaml.dump(features).strip())]
+            lines += ['features: ' + re.sub('\n\s*', ' ', yaml.dump(features, default_flow_style=True).strip())]
 
         flags = ['generated']
         flags += case_values['meta'].get('flags', [])
         flags += self.attribs['meta'].get('flags', [])
         flags = list(OrderedDict.fromkeys(flags))
-        lines += ['flags: ' + re.sub('\n\s*', ' ', yaml.dump(flags).strip())]
+        lines += ['flags: ' + re.sub('\n\s*', ' ', yaml.dump(flags, default_flow_style=True).strip())]
 
         includes = []
         includes += case_values['meta'].get('includes', [])
         includes += self.attribs['meta'].get('includes', [])
         includes = list(OrderedDict.fromkeys(includes))
         if len(includes):
-            lines += ['includes: ' + re.sub('\n\s*', ' ', yaml.dump(includes).strip())]
+            lines += ['includes: ' + re.sub('\n\s*', ' ', yaml.dump(includes, default_flow_style=True).strip())]
 
         if case_values['meta'].get('negative'):
             if self.attribs['meta'].get('negative'):

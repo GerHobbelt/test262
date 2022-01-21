@@ -30,8 +30,11 @@ execution_steps: &execution_steps
     - *restore_cache
     - run: npm install
     - *save_cache
-    - run: ./node_modules/.bin/jsvu --os=linux64 --engines=$hostName
-    - run: cp -r  ~/.jsvu r
+    - run:
+        name: fetch engines from jsvu
+        command: |
+          ./node_modules/.bin/jsvu --os=linux64 --engines=$hostName
+          cp -r  ~/.jsvu r
     - run: npm run ci
 
 jobs:
@@ -62,6 +65,24 @@ jobs:
       # - run:
       #     name: "Run deploy"
       #     command: ./tools/scripts/deploy.sh
+  "Project lint and generation unit tests on Python 3":
+    docker:
+      - image: circleci/python:3.7.4
+    working_directory: ~/test262
+    steps:
+      - checkout
+      - run:
+          name: "Install requirements for generation tool"
+          command: python -m pip install --user --requirement tools/generation/requirements.txt
+      - run:
+          name: "Install requirements for linter tool"
+          command: python -m pip install --user --requirement tools/lint/requirements.txt
+      - run:
+          name: "Test the generation tool"
+          command: ./tools/generation/test/run.py
+      - run:
+          name: "Test the lint tool"
+          command: ./tools/lint/test/run.py
   "V8: New or modified tests execution":
     docker:
       - image: *node_latest
@@ -107,6 +128,7 @@ jobs:
       - image: *node_latest
     working_directory: ~/test262
     environment:
+      LANG: C
       hostType: jsc
       hostPath: r/javascriptcore
       hostName: javascriptcore
@@ -120,11 +142,34 @@ jobs:
       hostPath: r/engines/xs/xs
       hostName: xs
     <<: [*execution_steps]
+  "engine262: New or modified tests execution":
+    docker:
+      - image: *node_latest
+    working_directory: ~/test262
+    environment:
+      hostType: engine262
+      hostPath: engine262/bin/engine262.js
+      hostName: engine262
+      hostArgs: --features=all
+    steps:
+      - checkout
+      - *restore_cache
+      - run: npm install
+      - *save_cache
+      - run:
+          name: fetch engine262
+          command: |
+            git clone https://github.com/engine262/engine262
+            cd engine262
+            npm install
+            npm run build
+      - run: npm run ci
 workflows:
   version: 2
   Tools:
     jobs:
       - "Project lint, generation tests and build"
+      - "Project lint and generation unit tests on Python 3"
   Tests execution:
     jobs:
       - "ChakraCore: New or modified tests execution"
@@ -133,3 +178,4 @@ workflows:
       - "V8: New or modified tests execution"
       - "V8 --harmony: New or modified tests execution"
       - "XS: New or modified tests execution"
+      - "engine262: New or modified tests execution"

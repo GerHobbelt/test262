@@ -9,7 +9,7 @@ class CheckHarnessFeatures(Check):
 
     def __init__(self):
         with open('./harness/features.yml', 'r') as f:
-            self.include_has_features = yaml.load(f.read())
+            self.include_has_features = yaml.safe_load(f.read())
 
     def comparison_result_lists(self, meta):
 
@@ -55,9 +55,10 @@ class CheckHarnessFeatures(Check):
             return
 
         if len(result['missing']) > 0:
+            missing = ', '.join(sorted(result['missing']))
             if len(result['features']) == 0:
-                return 'Missing: `features: [%s]`' % ', '.join(list(result['missing']))
+                return 'Missing: `features: [%s]`' % missing
             else:
-                return 'Missing from `features`: %s' % ', '.join(list(result['missing']))
+                return 'Missing from `features`: %s' % missing
         else:
             return
