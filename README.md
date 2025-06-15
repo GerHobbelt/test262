@@ -42,12 +42,12 @@ This project offers an explanation for many of its design decisions and maintena
 
 Volunteer-maintained projects that may be used to execute Test262 in various ECMAScript hosts:
 
-- https://github.com/bterlson/test262-harness (platform: Node.js)
+- https://github.com/tc39/test262-harness (platform: Node.js)
 - https://github.com/test262-utils/test262-harness-py (platform: Python)
 - https://bakkot.github.io/test262-web-runner/ (platform: web)
 - https://github.com/Izhido/test262_harness_cpp (platform: C++)
 - https://github.com/lahma/test262-harness-dotnet (platform: .NET)
-
+- https://github.com/cta-wave/WMAS/tree/latest/tools/wave/ecmascript (platform: Python; [Docker Deploy Instructions](https://github.com/cta-wave/WMAS-deploy/tree/wmas-latest))
 
 ### How To Read CI Results
 
