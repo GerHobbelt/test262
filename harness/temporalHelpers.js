@@ -151,20 +151,21 @@ var TemporalHelpers = {
   },
 
   /*
-   * assertPlainYearMonth(yearMonth, year, month, monthCode[, description[, era, eraYear]]):
+   * assertPlainYearMonth(yearMonth, year, month, monthCode[, description[, era, eraYear, referenceISODay]]):
    *
    * Shorthand for asserting that each field of a Temporal.PlainYearMonth is
    * equal to an expected value. (Except the `calendar` property, since callers
    * may want to assert either object equality with an object they put in there,
    * or the result of yearMonth.calendar.toString().)
    */
-  assertPlainYearMonth(yearMonth, year, month, monthCode, description = "", era = undefined, eraYear = undefined) {
+  assertPlainYearMonth(yearMonth, year, month, monthCode, description = "", era = undefined, eraYear = undefined, referenceISODay = 1) {
     assert(yearMonth instanceof Temporal.PlainYearMonth, `${description} instanceof`);
     assert.sameValue(yearMonth.era, era, `${description} era result`);
     assert.sameValue(yearMonth.eraYear, eraYear, `${description} eraYear result`);
     assert.sameValue(yearMonth.year, year, `${description} year result`);
     assert.sameValue(yearMonth.month, month, `${description} month result`);
     assert.sameValue(yearMonth.monthCode, monthCode, `${description} monthCode result`);
+    assert.sameValue(yearMonth.getISOFields().isoDay, referenceISODay, `${description} referenceISODay result`);
   },
 
   /*
@@ -239,39 +240,6 @@ var TemporalHelpers = {
   },
 
   /*
-   * checkFractionalSecondDigitsOptionWrongType(temporalObject):
-   *
-   * Checks the string-or-number type handling of the fractionalSecondDigits
-   * option to the various types' toString() methods. temporalObject is an
-   * instance of the Temporal type under test.
-   */
-  checkFractionalSecondDigitsOptionWrongType(temporalObject) {
-    // null is not a number, and converts to the string "null", which is an invalid string value
-    assert.throws(RangeError, () => temporalObject.toString({ fractionalSecondDigits: null }), "null");
-    // Booleans are not numbers, and convert to the strings "true" or "false", which are invalid
-    assert.throws(RangeError, () => temporalObject.toString({ fractionalSecondDigits: true }), "true");
-    assert.throws(RangeError, () => temporalObject.toString({ fractionalSecondDigits: false }), "false");
-    // Symbols are not numbers and cannot convert to strings
-    assert.throws(TypeError, () => temporalObject.toString({ fractionalSecondDigits: Symbol() }), "symbol");
-    // BigInts are not numbers and convert to strings which are invalid
-    assert.throws(RangeError, () => temporalObject.toString({ fractionalSecondDigits: 2n }), "bigint");
-
-    // Objects are not numbers and prefer their toString() methods when converting to a string
-    assert.throws(RangeError, () => temporalObject.toString({ fractionalSecondDigits: {} }), "plain object");
-
-    const toStringExpected = temporalObject.toString({ fractionalSecondDigits: 'auto' });
-    const expected = [
-      "get fractionalSecondDigits.toString",
-      "call fractionalSecondDigits.toString",
-    ];
-    const actual = [];
-    const observer = TemporalHelpers.toPrimitiveObserver(actual, "auto", "fractionalSecondDigits");
-    const result = temporalObject.toString({ fractionalSecondDigits: observer });
-    assert.sameValue(result, toStringExpected, "object with toString");
-    assert.compareArray(actual, expected, "order of operations");
-  },
-
-  /*
    * checkPlainDateTimeConversionFastPath(func):
    *
    * ToTemporalDate and ToTemporalTime should both, if given a
@@ -284,7 +252,7 @@ var TemporalHelpers = {
    * calendar object (so that it doesn't have to call the calendar getter itself
    * if it wants to make any assertions about the calendar.)
    */
-  checkPlainDateTimeConversionFastPath(func) {
+  checkPlainDateTimeConversionFastPath(func, message = "checkPlainDateTimeConversionFastPath") {
     const actual = [];
     const expected = [];
 
@@ -317,7 +285,7 @@ var TemporalHelpers = {
     });
 
     func(datetime, calendar);
-    assert.compareArray(actual, expected, "property getters not called");
+    assert.compareArray(actual, expected, `${message}: property getters not called`);
   },
 
   /*
@@ -928,6 +896,102 @@ var TemporalHelpers = {
   },
 
   /*
+   * A custom calendar used in prototype pollution checks. Verifies that the
+   * fromFields methods are always called with a null-prototype fields object.
+   */
+  calendarCheckFieldsPrototypePollution() {
+    class CalendarCheckFieldsPrototypePollution extends Temporal.Calendar {
+      constructor() {
+        super("iso8601");
+        this.dateFromFieldsCallCount = 0;
+        this.yearMonthFromFieldsCallCount = 0;
+        this.monthDayFromFieldsCallCount = 0;
+      }
+
+      // toString must remain "iso8601", so that some methods don't throw due to
+      // incompatible calendars
+
+      dateFromFields(fields, options = {}) {
+        this.dateFromFieldsCallCount++;
+        assert.sameValue(Object.getPrototypeOf(fields), null, "dateFromFields should be called with null-prototype fields object");
+        return super.dateFromFields(fields, options);
+      }
+
+      yearMonthFromFields(fields, options = {}) {
+        this.yearMonthFromFieldsCallCount++;
+        assert.sameValue(Object.getPrototypeOf(fields), null, "yearMonthFromFields should be called with null-prototype fields object");
+        return super.yearMonthFromFields(fields, options);
+      }
+
+      monthDayFromFields(fields, options = {}) {
+        this.monthDayFromFieldsCallCount++;
+        assert.sameValue(Object.getPrototypeOf(fields), null, "monthDayFromFields should be called with null-prototype fields object");
+        return super.monthDayFromFields(fields, options);
+      }
+    }
+
+    return new CalendarCheckFieldsPrototypePollution();
+  },
+
+  /*
+   * A custom calendar used in prototype pollution checks. Verifies that the
+   * mergeFields() method is always called with null-prototype fields objects.
+   */
+  calendarCheckMergeFieldsPrototypePollution() {
+    class CalendarCheckMergeFieldsPrototypePollution extends Temporal.Calendar {
+      constructor() {
+        super("iso8601");
+        this.mergeFieldsCallCount = 0;
+      }
+
+      toString() {
+        return "merge-fields-null-proto";
+      }
+
+      mergeFields(fields, additionalFields) {
+        this.mergeFieldsCallCount++;
+        assert.sameValue(Object.getPrototypeOf(fields), null, "mergeFields should be called with null-prototype fields object (first argument)");
+        assert.sameValue(Object.getPrototypeOf(additionalFields), null, "mergeFields should be called with null-prototype fields object (second argument)");
+        return super.mergeFields(fields, additionalFields);
+      }
+    }
+
+    return new CalendarCheckMergeFieldsPrototypePollution();
+  },
+
+  /*
+   * A custom calendar used in prototype pollution checks. Verifies that methods
+   * are always called with a null-prototype options object.
+   */
+  calendarCheckOptionsPrototypePollution() {
+    class CalendarCheckOptionsPrototypePollution extends Temporal.Calendar {
+      constructor() {
+        super("iso8601");
+        this.yearMonthFromFieldsCallCount = 0;
+        this.dateUntilCallCount = 0;
+      }
+
+      toString() {
+        return "options-null-proto";
+      }
+
+      yearMonthFromFields(fields, options) {
+        this.yearMonthFromFieldsCallCount++;
+        assert.sameValue(Object.getPrototypeOf(options), null, "yearMonthFromFields should be called with null-prototype options");
+        return super.yearMonthFromFields(fields, options);
+      }
+
+      dateUntil(one, two, options) {
+        this.dateUntilCallCount++;
+        assert.sameValue(Object.getPrototypeOf(options), null, "dateUntil should be called with null-prototype options");
+        return super.dateUntil(one, two, options);
+      }
+    }
+
+    return new CalendarCheckOptionsPrototypePollution();
+  },
+
+  /*
    * A custom calendar that asserts its dateAdd() method is called with the
    * options parameter having the value undefined.
    */
@@ -1032,6 +1096,44 @@ var TemporalHelpers = {
       }
     }
     return new CalendarFieldsIterable();
+  },
+
+  /*
+   * A custom calendar that asserts its ...FromFields() methods are called with
+   * the options parameter having the value undefined.
+   */
+  calendarFromFieldsUndefinedOptions() {
+    class CalendarFromFieldsUndefinedOptions extends Temporal.Calendar {
+      constructor() {
+        super("iso8601");
+        this.dateFromFieldsCallCount = 0;
+        this.monthDayFromFieldsCallCount = 0;
+        this.yearMonthFromFieldsCallCount = 0;
+      }
+
+      toString() {
+        return "from-fields-undef-options";
+      }
+
+      dateFromFields(fields, options) {
+        this.dateFromFieldsCallCount++;
+        assert.sameValue(options, undefined, "dateFromFields shouldn't be called with options");
+        return super.dateFromFields(fields, options);
+      }
+
+      yearMonthFromFields(fields, options) {
+        this.yearMonthFromFieldsCallCount++;
+        assert.sameValue(options, undefined, "yearMonthFromFields shouldn't be called with options");
+        return super.yearMonthFromFields(fields, options);
+      }
+
+      monthDayFromFields(fields, options) {
+        this.monthDayFromFieldsCallCount++;
+        assert.sameValue(options, undefined, "monthDayFromFields shouldn't be called with options");
+        return super.monthDayFromFields(fields, options);
+      }
+    }
+    return new CalendarFromFieldsUndefinedOptions();
   },
 
   /*
@@ -1191,13 +1293,23 @@ var TemporalHelpers = {
    * will log any calls to its accessors to the array @calls.
    */
   observeProperty(calls, object, propertyName, value) {
+    let displayName = propertyName;
+    if (typeof propertyName === 'symbol') {
+      if (Symbol.keyFor(propertyName) !== undefined) {
+        displayName = `[Symbol.for('${Symbol.keyFor(propertyName)}')]`;
+      } else if (propertyName.description.startsWith('Symbol.')) {
+        displayName = `[${propertyName.description}]`;
+      } else {
+        displayName = `[Symbol('${propertyName.description}')]`
+      }
+    }
     Object.defineProperty(object, propertyName, {
       get() {
-        calls.push(`get ${propertyName}`);
+        calls.push(`get ${displayName}`);
         return value;
       },
       set(v) {
-        calls.push(`set ${propertyName}`);
+        calls.push(`set ${displayName}`);
       }
     });
   },
@@ -1302,10 +1414,10 @@ var TemporalHelpers = {
         if (this._shiftNanoseconds > 0) {
           if (this._isBeforeShift(instant)) return [instant];
           if (instant.epochNanoseconds < this._epoch2) return [];
-          return [instant.add(this._shift)];
+          return [instant.subtract(this._shift)];
         }
         if (instant.epochNanoseconds < this._epoch2) return [instant];
-        const shifted = instant.add(this._shift);
+        const shifted = instant.subtract(this._shift);
         if (this._isBeforeShift(instant)) return [instant, shifted];
         return [shifted];
       }

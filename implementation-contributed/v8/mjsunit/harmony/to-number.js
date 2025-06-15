@@ -19,6 +19,8 @@ assertEquals(NaN, %ToNumber(undefined));
 assertEquals(-1, %ToNumber("-1"));
 assertEquals(123, %ToNumber("123"));
 assertEquals(NaN, %ToNumber("random text"));
+assertEquals(NaN, %ToNumber("INFINITY"));
+assertEquals(NaN, %ToNumber("infinity"));
 
 assertThrows(function() { %ToNumber(Symbol.toPrimitive) }, TypeError);
 

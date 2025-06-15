@@ -260,6 +260,10 @@ ShadowRealm
 # https://github.com/tc39/proposal-array-find-from-last
 array-find-from-last
 
+# Array.prototype.groupBy & Array.prototype.groupByToMap
+# https://github.com/tc39/proposal-array-grouping
+array-grouping
+
 # Intl.DurationFormat
 # https://github.com/tc39/proposal-intl-duration-format
 Intl.DurationFormat
@@ -267,6 +271,10 @@ Intl.DurationFormat
 # RegExp set notation + properties of strings
 # https://github.com/tc39/proposal-regexp-set-notation
 regexp-v-flag
+
+# Decorators
+# https://github.com/tc39/proposal-decorators
+decorators
 
 ## Standard language features
 #

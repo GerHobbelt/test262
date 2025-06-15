@@ -10,11 +10,17 @@ info: |
     sec-temporal-tosecondsstringprecision step 9:
       9. Let _digits_ be ? GetStringOrNumberOption(_normalizedOptions_, *"fractionalSecondDigits"*, « *"auto"* », 0, 9, *"auto"*).
     sec-temporal.instant.prototype.tostring step 6:
-      6. Let _precision_ be ? ToDurationSecondsStringPrecision(_options_).
+      6. Let _precision_ be ? ToSecondsStringPrecision(_options_).
 features: [Temporal]
 ---*/
 
 const instant = new Temporal.Instant(1_000_000_000_987_650_000n);
 
-const string = instant.toString({ fractionalSecondDigits: 2.5 });
-assert.sameValue(string, "2001-09-09T01:46:40.98Z", "fractionalSecondDigits 2.5 floors to 2");
+let string = instant.toString({ fractionalSecondDigits: 2.5 });
+assert.sameValue(string, "2001-09-09T01:46:40.98Z", "fractionalSecondDigits 2.5 truncates to 2");
+
+string = instant.toString({ fractionalSecondDigits: 9.7 });
+assert.sameValue(string, "2001-09-09T01:46:40.987650000Z", "fractionalSecondDigits 9.7 truncates to 9 and is not out of range");
+
+string = instant.toString({ fractionalSecondDigits: -0.6 });
+assert.sameValue(string, "2001-09-09T01:46:40Z", "fractionalSecondDigits -0.6 truncates to 0 and is not out of range");
