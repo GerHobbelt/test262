@@ -4,7 +4,7 @@
 esid: sec-functiondeclarationinstantiation
 es6id: 9.2.12
 description: >
-  Arguments are "unmapped" when paramater list is non-simple due to "rest"
+  Arguments are "unmapped" when parameter list is non-simple due to "rest"
   parameter
 info: |
   [...]

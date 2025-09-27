@@ -35,4 +35,4 @@ var p = new Proxy(target, handler);
 
 assert.sameValue(_handler, handler, "handler is context");
 assert.sameValue(_target, target, "target is the first parameter");
-assert.sameValue(_prop, "attr", "given prop is the second paramter");
+assert.sameValue(_prop, "attr", "given prop is the second parameter");

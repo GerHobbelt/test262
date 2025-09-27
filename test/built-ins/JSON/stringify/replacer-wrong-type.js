@@ -3,7 +3,7 @@
 /*---
 esid: sec-json.stringify
 description: >
-  Replacer paramter of wrong type is silently ignored.
+  Replacer parameter of wrong type is silently ignored.
 info: |
   JSON.stringify ( value [ , replacer [ , space ] ] )
 

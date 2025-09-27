@@ -42,4 +42,4 @@ Object.setPrototypeOf(array, proxy);
 assert.sameValue(1 in array, false);
 assert.sameValue(_handler, handler, 'handler is context');
 assert.sameValue(_target, target, 'target is the first parameter');
-assert.sameValue(_prop, '1', 'given prop is the second paramter');
+assert.sameValue(_prop, '1', 'given prop is the second parameter');

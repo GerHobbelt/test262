@@ -40,4 +40,4 @@ var heir = Object.create(proxy);
 assert.sameValue('prop' in heir, false);
 assert.sameValue(_handler, handler, 'handler is context');
 assert.sameValue(_target, target, 'target is the first parameter');
-assert.sameValue(_prop, 'prop', 'given prop is the second paramter');
+assert.sameValue(_prop, 'prop', 'given prop is the second parameter');
