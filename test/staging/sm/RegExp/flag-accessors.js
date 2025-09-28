@@ -2,17 +2,12 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js]
 flags:
   - noStrict
 description: |
-  pending
+  Implement RegExp.prototype.{global, ignoreCase, multiline, sticky, unicode}
 esid: pending
 ---*/
-var BUGNUMBER = 1120169;
-var summary = "Implement RegExp.prototype.{global, ignoreCase, multiline, sticky, unicode}";
-
-print(BUGNUMBER + ": " + summary);
 
 var props = [
   "global",
@@ -53,4 +48,3 @@ function testThrowsGeneric(obj) {
 function genericGet(obj, prop) {
     return Object.getOwnPropertyDescriptor(RegExp.prototype, prop).get.call(obj);
 }
-

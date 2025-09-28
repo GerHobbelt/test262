@@ -2,17 +2,12 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js]
 flags:
   - noStrict
 description: |
-  pending
+  async/await containing escapes
 esid: pending
 ---*/
-var BUGNUMBER = 1315815;
-var summary = "async/await containing escapes";
-
-print(BUGNUMBER + ": " + summary);
 
 // Using "eval" as the argument name is fugly, but it means evals below are
 // *direct* evals, and so their effects in the unescaped case won't extend
@@ -58,4 +53,3 @@ assert.sameValue(z, 42);
 
 var w = async(obj)=>{};
 assert.sameValue(typeof w, "function");
-

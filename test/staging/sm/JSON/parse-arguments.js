@@ -4,23 +4,12 @@
  */
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js]
 flags:
   - noStrict
 description: |
-  pending
+  JSON.parse handling of omitted arguments
 esid: pending
 ---*/
-var gTestfile = 'parse-arguments.js';
-//-----------------------------------------------------------------------------
-var BUGNUMBER = 653847;
-var summary = "JSON.parse handling of omitted arguments";
-
-print(BUGNUMBER + ": " + summary);
-
-/**************
- * BEGIN TEST *
- **************/
 
 try
 {
@@ -31,7 +20,3 @@ catch (e)
 {
   assert.sameValue(e instanceof SyntaxError, true, "expected syntax error, got: " + e);
 }
-
-/******************************************************************************/
-
-print("Tests complete");

@@ -4,7 +4,7 @@
  */
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js]
+includes: [sm/assertThrowsValue.js]
 flags:
   - noStrict
 description: |
@@ -70,7 +70,7 @@ assert.sameValue(Reflect.apply(new Proxy(f, {}),
          13);
 
 // Cross-compartment wrappers:
-var gw = createNewGlobal();
+var gw = $262.createRealm().global;
 assert.sameValue(Reflect.apply(gw.parseInt,
                        undefined,
                        ["45"]),

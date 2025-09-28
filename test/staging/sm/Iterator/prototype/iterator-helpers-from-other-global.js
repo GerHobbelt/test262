@@ -2,7 +2,6 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js]
 flags:
   - noStrict
 features:
@@ -31,7 +30,7 @@ function checkIterResult({done, value}, expectedDone, expectedValue) {
   assert.sameValue(Array.isArray(value) ? value[1] : value, expectedValue);
 }
 
-const otherGlobal = createNewGlobal({newCompartment: true});
+const otherGlobal = $262.createRealm().global;
 
 const methods = [
   ["map", x => x],

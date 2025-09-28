@@ -2,17 +2,12 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js]
 flags:
   - noStrict
 description: |
-  pending
+  Implement RegExp.prototype.flags
 esid: pending
 ---*/
-var BUGNUMBER = 1108467;
-var summary = "Implement RegExp.prototype.flags";
-
-print(BUGNUMBER + ": " + summary);
 
 assert.sameValue(RegExp.prototype.flags, "");
 assert.sameValue(/foo/iymg.flags, "gimy");
@@ -32,4 +27,3 @@ assert.throws(TypeError, () => genericFlags(""));
 function genericFlags(obj) {
     return Object.getOwnPropertyDescriptor(RegExp.prototype,"flags").get.call(obj);
 }
-

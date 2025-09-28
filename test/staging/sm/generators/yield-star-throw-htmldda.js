@@ -4,7 +4,6 @@
 /*---
 features:
   - IsHTMLDDA
-includes: [sm/non262.js, sm/non262-shell.js]
 flags:
   - noStrict
 description: |
@@ -24,7 +23,7 @@ var it = g({
     next() {
         return {done: false};
     },
-    throw: createIsHTMLDDA(),
+    throw: $262.IsHTMLDDA,
     return() {
         calledReturn = true;
         return {done: false};

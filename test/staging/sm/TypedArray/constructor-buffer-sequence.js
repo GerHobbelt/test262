@@ -2,7 +2,6 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js, sm/non262-TypedArray-shell.js]
 flags:
   - noStrict
 description: |
@@ -13,7 +12,7 @@ esid: pending
 
 // Ensure the various error conditions are tested in the correct order.
 
-const otherGlobal = createNewGlobal();
+const otherGlobal = $262.createRealm().global;
 
 function* createBuffers(lengths = [0, 8]) {
     for (let length of lengths) {

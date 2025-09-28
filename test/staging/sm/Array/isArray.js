@@ -4,7 +4,6 @@
  */
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js]
 flags:
   - noStrict
 description: |
@@ -12,7 +11,7 @@ description: |
 esid: pending
 ---*/
 var global = this;
-var otherGlobal = createNewGlobal();
+var otherGlobal = $262.createRealm().global;
 
 var thisGlobal = () => global;
 var alternateGlobals = (function(i) {

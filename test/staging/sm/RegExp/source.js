@@ -2,17 +2,12 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js]
 flags:
   - noStrict
 description: |
-  pending
+  Implement RegExp.prototype.source
 esid: pending
 ---*/
-var BUGNUMBER = 1120169;
-var summary = "Implement RegExp.prototype.source";
-
-print(BUGNUMBER + ": " + summary);
 
 assert.sameValue(RegExp.prototype.source, "(?:)");
 assert.sameValue(/foo/.source, "foo");
@@ -35,4 +30,3 @@ assert.throws(TypeError, () => genericSource(new Proxy(/foo/, {get(){ return tru
 function genericSource(obj) {
     return Object.getOwnPropertyDescriptor(RegExp.prototype, "source").get.call(obj);
 }
-

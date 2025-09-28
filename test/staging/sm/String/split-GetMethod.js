@@ -2,17 +2,13 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js, deepEqual.js]
+includes: [compareArray.js]
 flags:
   - noStrict
 description: |
-  pending
+  String.prototype.split should call GetMethod.
 esid: pending
 ---*/
-var BUGNUMBER = 1290655;
-var summary = "String.prototype.split should call GetMethod.";
-
-print(BUGNUMBER + ": " + summary);
 
 function create(value) {
     return {
@@ -24,10 +20,9 @@ function create(value) {
 }
 
 for (let v of [null, undefined]) {
-    assert.deepEqual("a-a".split(create(v)), ["a", "a"]);
+    assert.compareArray("a-a".split(create(v)), ["a", "a"]);
 }
 
 for (let v of [1, true, Symbol.iterator, "", {}, []]) {
     assert.throws(TypeError, () => "a-a".split(create(v)));
 }
-

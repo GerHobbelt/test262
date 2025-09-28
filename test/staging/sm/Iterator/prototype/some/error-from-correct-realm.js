@@ -2,7 +2,6 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js]
 flags:
   - noStrict
 features:
@@ -14,7 +13,7 @@ description: |
 esid: pending
 ---*/
 
-const otherGlobal = createNewGlobal({newCompartment: true});
+const otherGlobal = $262.createRealm().global;
 assert.sameValue(TypeError !== otherGlobal.TypeError, true);
 
 const iter = [].values();

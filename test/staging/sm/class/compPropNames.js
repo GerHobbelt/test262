@@ -2,17 +2,13 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js]
+includes: [sm/assertThrowsValue.js]
 flags:
   - noStrict
 description: |
-  pending
+  Computed Property Names
 esid: pending
 ---*/
-var BUGNUMBER = 924688;
-var summary = 'Computed Property Names';
-
-print(BUGNUMBER + ": " + summary);
 
 // Function definitions.
 function syntaxError (script) {
@@ -249,4 +245,3 @@ obj = {
 assert.sameValue(obj.hey, 1);
 assert.sameValue(obj[4], 2);
 assertThrowsValue(() => { obj.x = 7; }, 3);
-

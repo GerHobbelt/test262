@@ -2,7 +2,6 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js]
 flags:
   - noStrict
 description: |
@@ -13,7 +12,7 @@ function neverCalled() {
   assert.sameValue(true, false, "unexpected call");
 }
 
-const g = createNewGlobal();
+const g = $262.createRealm().global;
 
 assert.sameValue(typeof String.prototype.replaceAll, "function");
 assert.sameValue(String.prototype.replaceAll.length, 2);

@@ -2,17 +2,12 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js]
 flags:
   - noStrict
 description: |
-  pending
+  Method Definitions - Generators
 esid: pending
 ---*/
-var BUGNUMBER = 924672;
-var summary = 'Method Definitions - Generators'
-
-print(BUGNUMBER + ": " + summary);
 
 // Function definitions.
 function syntaxError (script) {
@@ -89,4 +84,3 @@ assert.sameValue(a.b(1).next().value, 1);
 // Generators should not have [[Construct]]
 a = {*g() { yield 1; }}
 assert.throws(TypeError, () => { new a.g });
-

@@ -2,13 +2,16 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js, sm/non262-TypedArray-shell.js, deepEqual.js]
+includes: [sm/non262-TypedArray-shell.js, deepEqual.js]
 flags:
   - noStrict
 description: |
   pending
 esid: pending
 ---*/
+
+var otherGlobal = $262.createRealm().global;
+
 for (var constructor of anyTypedArrayConstructors) {
     assert.sameValue(constructor.of.length, 0);
 
@@ -40,12 +43,10 @@ for (var constructor of anyTypedArrayConstructors) {
     assert.sameValue(hits, 1);
 
     // Behavior across compartments.
-    if (typeof createNewGlobal === "function") {
-        var newC = createNewGlobal()[constructor.name];
-        assert.sameValue(newC.of() instanceof newC, true);
-        assert.sameValue(newC.of() instanceof constructor, false);
-        assert.sameValue(newC.of.call(constructor) instanceof constructor, true);
-    }
+    var newC = otherGlobal[constructor.name];
+    assert.sameValue(newC.of() instanceof newC, true);
+    assert.sameValue(newC.of() instanceof constructor, false);
+    assert.sameValue(newC.of.call(constructor) instanceof constructor, true);
 
     // Throws if `this` isn't a constructor.
     var invalidConstructors = [undefined, null, 1, false, "", Symbol(), [], {}, /./,

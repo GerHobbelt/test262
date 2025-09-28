@@ -2,17 +2,12 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js]
 flags:
   - noStrict
 description: |
-  pending
+  IteratorNext should throw if the value returned by iterator.next() is not an object.
 esid: pending
 ---*/
-var BUGNUMBER = 1016936;
-var summary = "IteratorNext should throw if the value returned by iterator.next() is not an object.";
-
-print(BUGNUMBER + ": " + summary);
 
 var nonobjs = [
     null,
@@ -69,4 +64,3 @@ for (var nonobj of nonobjs) {
         v.next();
     });
 }
-

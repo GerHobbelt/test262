@@ -2,17 +2,12 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js]
 flags:
   - noStrict
 description: |
-  pending
+  Make RegExp.prototype.toString to be a generic function.
 esid: pending
 ---*/
-var BUGNUMBER = 1079919;
-var summary = "Make RegExp.prototype.toString to be a generic function.";
-
-print(BUGNUMBER + ": " + summary);
 
 assert.sameValue(RegExp.prototype.toString(), "/(?:)/");
 assert.sameValue(/foo/.toString(), "/foo/");
@@ -48,4 +43,3 @@ var p = new Proxy({}, {
 });
 assert.sameValue(RegExp.prototype.toString.call(p), "/source/flags");
 assert.sameValue(a.join(","), "source,source-tostring,flags,flags-tostring");
-

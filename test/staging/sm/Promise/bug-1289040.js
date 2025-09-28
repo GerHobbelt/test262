@@ -2,14 +2,13 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js]
 flags:
   - noStrict
 description: |
   pending
 esid: pending
 ---*/
-var global = createNewGlobal();
+var global = $262.createRealm().global;
 Promise.prototype.then = global.Promise.prototype.then;
 p1 = new Promise(function f(r) {
     r(1);

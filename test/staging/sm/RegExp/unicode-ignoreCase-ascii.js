@@ -2,18 +2,13 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js, compareArray.js]
+includes: [compareArray.js]
 flags:
   - noStrict
 description: |
-  pending
+  Implement RegExp unicode flag -- ignoreCase flag with non-ascii to ascii map.
 esid: pending
 ---*/
-
-var BUGNUMBER = 1135377;
-var summary = "Implement RegExp unicode flag -- ignoreCase flag with non-ascii to ascii map.";
-
-print(BUGNUMBER + ": " + summary);
 
 // LATIN CAPITAL LETTER Y WITH DIAERESIS
 assert.compareArray(/\u0178/iu.exec("\u00FF"),
@@ -52,4 +47,3 @@ assert.compareArray(/\u212B/iu.exec("\u00E5"),
               ["\u00E5"]);
 assert.compareArray(/\u00E5/iu.exec("\u212B"),
               ["\u212B"]);
-

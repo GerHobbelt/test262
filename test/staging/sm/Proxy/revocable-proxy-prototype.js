@@ -4,22 +4,13 @@
  */
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js]
 flags:
   - noStrict
 description: |
-  pending
+  Accessing a revocable proxy's [[Prototype]] shouldn't crash
 esid: pending
 ---*/
-var gTestfile = 'revocable-proxy-prototype.js';
-var BUGNUMBER = 1052139;
-var summary = "Accessing a revocable proxy's [[Prototype]] shouldn't crash";
 
-print(BUGNUMBER + ": " + summary);
-
-/**************
- * BEGIN TEST *
- **************/
 function checkFunctionAppliedToRevokedProxy(fun)
 {
   var p = Proxy.revocable({}, {});
@@ -39,7 +30,3 @@ function checkFunctionAppliedToRevokedProxy(fun)
 
 checkFunctionAppliedToRevokedProxy(proxy => Object.getPrototypeOf(proxy));
 checkFunctionAppliedToRevokedProxy(proxy => Object.setPrototypeOf(proxy, null));
-
-/******************************************************************************/
-
-print("Tests complete");

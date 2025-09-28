@@ -2,13 +2,13 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js]
 flags:
   - noStrict
 description: |
   pending
 esid: pending
 ---*/
+
 /**
  * These return* functions are used by the
  * replacer tests taken from bug 512447
@@ -157,7 +157,3 @@ catch (e)
 {
   assert.sameValue(e instanceof TypeError, true, "no TypeError thrown: " + e);
 }
-
-/******************************************************************************/
-
-print("Tests complete");

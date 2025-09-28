@@ -2,13 +2,13 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js]
 flags:
   - noStrict
 description: |
   pending
 esid: pending
 ---*/
+
 function doubler(k, v)
 {
   assert.sameValue(typeof k, "string");
@@ -47,7 +47,3 @@ catch (e)
   assert.sameValue(e instanceof SyntaxError, true, "wrong exception: " + e);
 }
 assert.sameValue(called, false);
-
-/******************************************************************************/
-
-print("Tests complete");

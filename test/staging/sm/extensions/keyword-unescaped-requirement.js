@@ -4,24 +4,12 @@
  */
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js]
 flags:
   - noStrict
 description: |
-  pending
+  Escape sequences aren't allowed in bolded grammar tokens (that is, in keywords, possibly contextual keywords)
 esid: pending
 ---*/
-//-----------------------------------------------------------------------------
-var BUGNUMBER = 1204027;
-var summary =
-  "Escape sequences aren't allowed in bolded grammar tokens (that is, in " +
-  "keywords, possibly contextual keywords)";
-
-print(BUGNUMBER + ": " + summary);
-
-/**************
- * BEGIN TEST *
- **************/
 
 var randomExtensions =
   [
@@ -41,7 +29,3 @@ for (var extension of randomExtensions)
 {
   assert.throws(SyntaxError, () => Function(extension), "bad behavior for: " + extension);
 }
-
-/******************************************************************************/
-
-print("Tests complete");

@@ -6,7 +6,7 @@
 /*---
 flags:
   - onlyStrict
-includes: [sm/non262.js, sm/non262-shell.js, deepEqual.js]
+includes: [compareArray.js]
 description: |
   pending
 esid: pending
@@ -34,7 +34,7 @@ for (let value of primitives) {
     });
 
     let x = [1, 2].concat(value);
-    assert.deepEqual(x, [1, 2, value]);
+    assert.compareArray(x, [1, 2, value]);
 
     delete prototype[Symbol.isConcatSpreadable];
     delete prototype.length;

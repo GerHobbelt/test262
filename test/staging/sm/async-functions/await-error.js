@@ -2,17 +2,12 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js]
 flags:
   - noStrict
 description: |
-  pending
+  await outside of async function should provide better error
 esid: pending
 ---*/
-var BUGNUMBER = 1317153;
-var summary = "await outside of async function should provide better error";
-
-print(BUGNUMBER + ": " + summary);
 
 let caught = false;
 try {
@@ -22,4 +17,3 @@ try {
     caught = true;
 }
 assert.sameValue(caught, true);
-

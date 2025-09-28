@@ -4,7 +4,7 @@
  */
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js, sm/non262-Reflect-shell.js, deepEqual.js]
+includes: [sm/non262-Reflect-shell.js, deepEqual.js]
 flags:
   - noStrict
 description: |
@@ -56,7 +56,7 @@ g = Derived.bind(null, "q");
 assert.deepEqual(Reflect.construct(g, [8, 9]), new g(8, 9));
 
 // Cross-compartment wrappers:
-var g = createNewGlobal();
+var g = $262.createRealm().global;
 var local = {here: this};
 g.eval("function F(arg) { this.arg = arg }");
 assert.deepEqual(Reflect.construct(g.F, [local]), new g.F(local));

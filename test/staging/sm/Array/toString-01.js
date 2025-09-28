@@ -4,22 +4,12 @@
  */
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js]
 flags:
   - noStrict
 description: |
-  pending
+  Array.prototype.toString
 esid: pending
 ---*/
-//-----------------------------------------------------------------------------
-var BUGNUMBER = 562446;
-var summary = 'ES5: Array.prototype.toString';
-
-print(BUGNUMBER + ": " + summary);
-
-/**************
- * BEGIN TEST *
- **************/
 
 var o;
 
@@ -49,7 +39,3 @@ catch (e)
            "expected thrown e === 42 when calling [].toString on an object " +
            "with a join getter that throws, got " + e);
 }
-
-/******************************************************************************/
-
-print("All tests passed!");

@@ -2,17 +2,13 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js, compareArray.js]
+includes: [compareArray.js]
 flags:
   - noStrict
 description: |
-  pending
+  Implement RegExp unicode flag -- lead and trail patterns in RegExpUnicodeEscapeSequence.
 esid: pending
 ---*/
-var BUGNUMBER = 1135377;
-var summary = "Implement RegExp unicode flag -- lead and trail patterns in RegExpUnicodeEscapeSequence.";
-
-print(BUGNUMBER + ": " + summary);
 
 // ==== standalone ====
 
@@ -224,4 +220,3 @@ assert.throws(SyntaxError, () => eval(`/\\uD83D\\u00/u`));
 assert.throws(SyntaxError, () => eval(`/\\uD83D\\u000/u`));
 assert.throws(SyntaxError, () => eval(`/\\uD83D\\u000G/u`));
 assert.throws(SyntaxError, () => eval(`/\\uD83D\\u0.00/u`));
-

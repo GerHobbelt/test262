@@ -2,7 +2,7 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-includes: [compareArray.js, deepEqual.js, sm/non262-shell.js, sm/non262.js]
+includes: [compareArray.js]
 flags:
   - noStrict
 description: |
@@ -95,9 +95,9 @@ esid: pending
     function assertIsRawJson(rawJson, expectedRawJsonValue) {
         assert.sameValue(null, Object.getPrototypeOf(rawJson));
         assert.sameValue(true, Object.hasOwn(rawJson, 'rawJSON'));
-        assert.deepEqual(['rawJSON'], Object.keys(rawJson));
-        assert.deepEqual(['rawJSON'], Object.getOwnPropertyNames(rawJson));
-        assert.deepEqual([], Object.getOwnPropertySymbols(rawJson));
+        assert.compareArray(['rawJSON'], Object.keys(rawJson));
+        assert.compareArray(['rawJSON'], Object.getOwnPropertyNames(rawJson));
+        assert.compareArray([], Object.getOwnPropertySymbols(rawJson));
         assert.sameValue(expectedRawJsonValue, rawJson.rawJSON);
     }
 
@@ -117,11 +117,11 @@ esid: pending
     var p = JSON.rawJSON(false);
     var obj = { a: "hi" };
     Object.setPrototypeOf(obj, p);
-    assert.deepEqual(obj.rawJSON, "false");
+    assert.sameValue(obj.rawJSON, "false");
 })();
 
 (function checkErrorsComeFromCorrectRealm() {
-    const otherGlobal = createNewGlobal({newCompartment: true});
+    const otherGlobal = $262.createRealm().global;
     assert.sameValue(TypeError !== otherGlobal.TypeError, true);
 
     assertErrorComesFromCorrectRealm = (fun, thisRealmType) => {

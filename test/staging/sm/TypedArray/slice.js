@@ -2,13 +2,16 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js, sm/non262-TypedArray-shell.js, compareArray.js]
+includes: [sm/non262-TypedArray-shell.js, compareArray.js]
 flags:
   - noStrict
 description: |
   pending
 esid: pending
 ---*/
+
+var otherGlobal = $262.createRealm().global;
+
 for (var constructor of anyTypedArrayConstructors) {
     assert.sameValue(constructor.prototype.slice.length, 2);
 
@@ -28,11 +31,9 @@ for (var constructor of anyTypedArrayConstructors) {
     assert.compareArray(new constructor([1, 2]).slice(1, 5), new constructor([2]));
 
     // Called from other globals.
-    if (typeof createNewGlobal === "function") {
-        var slice = createNewGlobal()[constructor.name].prototype.slice;
-        assert.compareArray(slice.call(new constructor([3, 2, 1]), 1),
-                      new constructor([2, 1]));
-    }
+    var slice = otherGlobal[constructor.name].prototype.slice;
+    assert.compareArray(slice.call(new constructor([3, 2, 1]), 1),
+                  new constructor([2, 1]));
 
     // Throws if `this` isn't a TypedArray.
     var invalidReceivers = [undefined, null, 1, false, "", Symbol(), [], {}, /./,

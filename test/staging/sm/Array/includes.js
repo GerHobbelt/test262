@@ -4,17 +4,12 @@
  */
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js]
 flags:
   - noStrict
 description: |
-  pending
+  Implement Array.prototype.includes
 esid: pending
 ---*/
-var BUGNUMBER = 1069063;
-var summary = "Implement Array.prototype.includes";
-
-print(BUGNUMBER + ": " + summary);
 
 assert.sameValue(typeof [].includes, "function");
 assert.sameValue([].includes.length, 1);
@@ -62,4 +57,3 @@ function assertFalse(v) {
 function staticIncludes(o, v, f) {
     return [].includes.call(o, v, f);
 }
-

@@ -4,23 +4,12 @@
  */
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js]
 flags:
   - noStrict
 description: |
-  pending
+  Array length redefinition behavior with non-configurable elements
 esid: pending
 ---*/
-//-----------------------------------------------------------------------------
-var BUGNUMBER = 858381;
-var summary =
-  "Array length redefinition behavior with non-configurable elements";
-
-print(BUGNUMBER + ": " + summary);
-
-/**************
- * BEGIN TEST *
- **************/
 
 function addDataProperty(obj, prop, value, enumerable, configurable, writable)
 {
@@ -107,7 +96,3 @@ function strict()
     assert.sameValue(props[i], expected[i], "unexpected property: " + props[i]);
 }
 strict();
-
-/******************************************************************************/
-
-print("Tests complete");
