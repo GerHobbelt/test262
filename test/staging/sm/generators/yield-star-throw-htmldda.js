@@ -4,7 +4,7 @@
 /*---
 features:
   - IsHTMLDDA
-includes: [sm/non262.js, sm/non262-shell.js, sm/non262-generators-shell.js]
+includes: [sm/non262.js, sm/non262-shell.js]
 flags:
   - noStrict
 description: |
@@ -33,7 +33,7 @@ var it = g({
 
 it.next();
 
-assertThrowsInstanceOf(() => it.throw(""), TypeError);
+assert.throws(TypeError, () => it.throw(""));
 
 assert.sameValue(calledReturn, false);
 

@@ -10,17 +10,19 @@ description: |
 esid: pending
 ---*/
 
-assertThrowsInstanceOf(() => eval(`class A { #x; #x; }`), SyntaxError);
+assert.throws(SyntaxError, () => eval(`class A { #x; #x; }`));
 
 // No computed private fields
-assertThrowsInstanceOf(
-    () => eval(`var x = "foo"; class A { #[x] = 20; }`), SyntaxError);
+assert.throws(SyntaxError, () => eval(`var x = "foo"; class A { #[x] = 20; }`));
 
-assertThrowsInstanceOfWithMessage(() => eval(`class A { #x; h(o) { return !#x; }}`),
+assert.throws(
     SyntaxError,
+    () => eval(`class A { #x; h(o) { return !#x; }}`),
     "invalid use of private name in unary expression without object reference");
-assertThrowsInstanceOfWithMessage(() => eval(`class A { #x; h(o) { return 1 + #x in o; }}`),
+
+assert.throws(
     SyntaxError,
+    () => eval(`class A { #x; h(o) { return 1 + #x in o; }}`),
     "invalid use of private name due to operator precedence");
 
 

@@ -2,7 +2,7 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-includes: [sm/non262.js, sm/non262-shell.js, sm/non262-generators-shell.js]
+includes: [sm/non262.js, sm/non262-shell.js]
 flags:
   - noStrict
 description: |
@@ -29,12 +29,12 @@ for (let primitive of primitives) {
             return primitive;
         }
     };
-    assertThrowsInstanceOf(() => {
+    assert.throws(TypeError, () => {
         function* g() {
             yield* obj;
         }
         for (let x of g()) {
         }
-    }, TypeError);
+    });
 }
 
