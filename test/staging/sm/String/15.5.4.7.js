@@ -4,10 +4,9 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   String.prototype.indexOf with empty searchString
+info: bugzilla.mozilla.org/show_bug.cgi?id=612838
 esid: pending
 ---*/
 

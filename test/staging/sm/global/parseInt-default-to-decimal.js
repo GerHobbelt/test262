@@ -4,10 +4,9 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   parseInt should treat leading-zero inputs (with radix unspecified) as decimal, not octal
+info: bugzilla.mozilla.org/show_bug.cgi?id=583925
 esid: pending
 ---*/
 

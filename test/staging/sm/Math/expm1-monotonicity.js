@@ -2,10 +2,9 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-flags:
-  - noStrict
 description: |
   expm1 should be monotonically increasing
+info: bugzilla.mozilla.org/show_bug.cgi?id=897634
 esid: pending
 ---*/
 

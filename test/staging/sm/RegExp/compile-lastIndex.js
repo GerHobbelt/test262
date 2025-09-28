@@ -4,10 +4,9 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   RegExp.prototype.compile must perform all its steps *except* setting .lastIndex, then throw, when provided a RegExp whose .lastIndex has been made non-writable
+info: bugzilla.mozilla.org/show_bug.cgi?id=1253099
 esid: pending
 ---*/
 

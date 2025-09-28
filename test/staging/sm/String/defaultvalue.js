@@ -4,10 +4,9 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   [[DefaultValue]] behavior wrong for String with overridden valueOf/toString
+info: bugzilla.mozilla.org/show_bug.cgi?id=645464
 esid: pending
 ---*/
 

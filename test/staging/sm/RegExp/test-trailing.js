@@ -2,10 +2,9 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-flags:
-  - noStrict
 description: |
   Trailing .* should not be ignored on matchOnly match.
+info: bugzilla.mozilla.org/show_bug.cgi?id=1304737
 esid: pending
 ---*/
 

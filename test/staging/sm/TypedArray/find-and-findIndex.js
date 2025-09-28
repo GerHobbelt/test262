@@ -5,10 +5,9 @@
 
 /*---
 includes: [sm/non262-TypedArray-shell.js]
-flags:
-  - noStrict
 description: |
   Implement %TypedArray%.prototype.{find, findIndex}
+info: bugzilla.mozilla.org/show_bug.cgi?id=1078975
 esid: pending
 features: [Symbol]
 ---*/

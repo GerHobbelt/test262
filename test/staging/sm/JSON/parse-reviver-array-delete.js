@@ -4,10 +4,9 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   JSON.parse with a reviver which elides array elements
+info: bugzilla.mozilla.org/show_bug.cgi?id=999999
 esid: pending
 ---*/
 

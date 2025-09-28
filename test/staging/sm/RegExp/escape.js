@@ -2,10 +2,9 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-flags:
-  - noStrict
 description: |
   Slash and LineTerminator should be escaped correctly.
+info: bugzilla.mozilla.org/show_bug.cgi?id=1130860
 esid: pending
 ---*/
 

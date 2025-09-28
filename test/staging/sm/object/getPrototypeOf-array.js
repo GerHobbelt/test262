@@ -4,10 +4,9 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   The [[Prototype]] of an object whose prototype chain contains an array isn't that array's [[Prototype]]
+info: bugzilla.mozilla.org/show_bug.cgi?id=769041
 esid: pending
 ---*/
 

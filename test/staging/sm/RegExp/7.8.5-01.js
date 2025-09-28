@@ -4,10 +4,9 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   Line terminator after backslash is invalid in regexp literals
+info: bugzilla.mozilla.org/show_bug.cgi?id=615070
 esid: pending
 ---*/
 

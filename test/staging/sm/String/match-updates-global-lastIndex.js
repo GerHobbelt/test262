@@ -4,10 +4,9 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   String.prototype.match should zero the .lastIndex when called with a global RegExp
+info: bugzilla.mozilla.org/show_bug.cgi?id=501739
 esid: pending
 ---*/
 

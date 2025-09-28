@@ -3,10 +3,9 @@
 
 /*---
 includes: [compareArray.js]
-flags:
-  - noStrict
 description: |
   Implement RegExp unicode flag -- back reference should not match lead surrogate that has corresponding trail surrogate.
+info: bugzilla.mozilla.org/show_bug.cgi?id=1135377
 esid: pending
 ---*/
 

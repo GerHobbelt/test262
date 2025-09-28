@@ -2,10 +2,9 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-flags:
-  - noStrict
 description: |
   Internal usage of split should not be affected by prototpe change
+info: bugzilla.mozilla.org/show_bug.cgi?id=1268138
 esid: pending
 ---*/
 

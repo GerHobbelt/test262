@@ -2,10 +2,9 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-flags:
-  - noStrict
 description: |
   Proxy constructor should not throw if either the target or handler is a revoked proxy.
+info: bugzilla.mozilla.org/show_bug.cgi?id=1151149
 esid: pending
 ---*/
 

@@ -2,10 +2,9 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-flags:
-  - noStrict
 description: |
   negative lastIndex should be treated as 0.
+info: bugzilla.mozilla.org/show_bug.cgi?id=1207922
 esid: pending
 ---*/
 

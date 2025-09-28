@@ -2,10 +2,9 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-flags:
-  - noStrict
 description: |
   String.prototype.split with regexp separator
+info: bugzilla.mozilla.org/show_bug.cgi?id=614608
 esid: pending
 ---*/
 /*

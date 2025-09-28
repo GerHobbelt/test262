@@ -5,10 +5,9 @@
 
 /*---
 includes: [sm/assertThrowsValue.js]
-flags:
-  - noStrict
 description: |
   Number.prototype.toExponential
+info: bugzilla.mozilla.org/show_bug.cgi?id=818617
 esid: pending
 ---*/
 

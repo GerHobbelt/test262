@@ -4,10 +4,9 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   Declarations in for-in loop heads must not contain |in|-expression initializers
+info: bugzilla.mozilla.org/show_bug.cgi?id=1163851
 esid: pending
 ---*/
 

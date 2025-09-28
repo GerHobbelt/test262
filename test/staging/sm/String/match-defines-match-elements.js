@@ -4,10 +4,9 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   String.prototype.match must define matches on the returned array, not set them
+info: bugzilla.mozilla.org/show_bug.cgi?id=677820
 esid: pending
 ---*/
 

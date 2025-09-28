@@ -2,10 +2,9 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-flags:
-  - noStrict
 description: |
   ignoreCase match should perform Canonicalize both on input and pattern.
+info: bugzilla.mozilla.org/show_bug.cgi?id=1280046
 esid: pending
 ---*/
 

@@ -3,10 +3,9 @@
 
 /*---
 includes: [compareArray.js]
-flags:
-  - noStrict
 description: |
   Implement RegExp unicode flag -- ignoreCase flag with non-ascii to ascii map.
+info: bugzilla.mozilla.org/show_bug.cgi?id=1135377
 esid: pending
 ---*/
 

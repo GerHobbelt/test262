@@ -5,10 +5,9 @@
 
 /*---
 includes: [compareArray.js]
-flags:
-  - noStrict
 description: |
   Object.getOwnPropertyNames: array objects
+info: bugzilla.mozilla.org/show_bug.cgi?id=518663
 esid: pending
 ---*/
 

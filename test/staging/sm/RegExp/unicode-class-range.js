@@ -2,10 +2,9 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-flags:
-  - noStrict
 description: |
   Implement RegExp unicode flag -- disallow range with CharacterClassEscape.
+info: bugzilla.mozilla.org/show_bug.cgi?id=1135377
 esid: pending
 ---*/
 

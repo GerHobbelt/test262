@@ -4,10 +4,9 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   Don't crash compiling a non-body-level for-loop whose loop declaration is a const
+info: bugzilla.mozilla.org/show_bug.cgi?id=1146644
 esid: pending
 ---*/
 

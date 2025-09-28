@@ -2,10 +2,9 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-flags:
-  - noStrict
 description: |
   RegExp constructor with pattern with @@match.
+info: bugzilla.mozilla.org/show_bug.cgi?id=1147817
 esid: pending
 ---*/
 

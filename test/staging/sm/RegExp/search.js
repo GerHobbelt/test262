@@ -2,10 +2,9 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-flags:
-  - noStrict
 description: |
   Implement RegExp.prototype[@@search].
+info: bugzilla.mozilla.org/show_bug.cgi?id=887016
 esid: pending
 ---*/
 

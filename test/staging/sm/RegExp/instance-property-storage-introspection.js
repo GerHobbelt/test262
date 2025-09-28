@@ -4,10 +4,9 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   Represent /a/.{lastIndex,global,source,multiline,sticky,ignoreCase} with plain old data properties
+info: bugzilla.mozilla.org/show_bug.cgi?id=640072
 esid: pending
 ---*/
 

@@ -4,10 +4,9 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   Call replacer function exactly once per value
+info: bugzilla.mozilla.org/show_bug.cgi?id=584909
 esid: pending
 ---*/
 

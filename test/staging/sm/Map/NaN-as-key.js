@@ -4,10 +4,9 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   All NaNs must be treated as identical keys for Map
+info: bugzilla.mozilla.org/show_bug.cgi?id=722260
 esid: pending
 ---*/
 

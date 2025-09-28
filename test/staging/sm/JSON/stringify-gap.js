@@ -4,10 +4,9 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   JSON.stringify(_1, _2, numberGreaterThanOne) produces wrong output
+info: bugzilla.mozilla.org/show_bug.cgi?id=584909
 esid: pending
 ---*/
 

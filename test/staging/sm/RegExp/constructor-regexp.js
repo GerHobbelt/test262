@@ -2,10 +2,9 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-flags:
-  - noStrict
 description: |
   RegExp constructor shouldn't invoke source/flags getters on argument RegExp instance.
+info: bugzilla.mozilla.org/show_bug.cgi?id=1130860
 esid: pending
 ---*/
 

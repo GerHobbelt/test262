@@ -4,10 +4,9 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   ({}).toString.call(null) == "[object Null]", ({}).toString.call(undefined) == "[object Undefined]"
+info: bugzilla.mozilla.org/show_bug.cgi?id=575522
 esid: pending
 ---*/
 

@@ -4,10 +4,9 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   Object.seal() should return its argument with no conversion when the argument is a primitive value
+info: bugzilla.mozilla.org/show_bug.cgi?id=1075294
 esid: pending
 features: [Symbol]
 ---*/

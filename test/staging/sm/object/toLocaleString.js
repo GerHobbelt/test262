@@ -4,10 +4,9 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   Object.prototype.toLocaleString
+info: bugzilla.mozilla.org/show_bug.cgi?id=653789
 esid: pending
 ---*/
 

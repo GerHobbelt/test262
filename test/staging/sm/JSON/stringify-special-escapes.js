@@ -4,10 +4,9 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   JSON.stringify of \\b\\f\\n\\r\\t should use one-character escapes, not hex
+info: bugzilla.mozilla.org/show_bug.cgi?id=512266
 esid: pending
 ---*/
 

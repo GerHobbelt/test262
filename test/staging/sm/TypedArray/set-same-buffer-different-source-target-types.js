@@ -2,10 +2,9 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-flags:
-  - noStrict
 description: |
   When setting a typed array from an overlapping typed array of different element type, copy the source elements into properly-sized temporary memory, and properly copy them into the target without overflow (of either source *or* target) when finished
+info: bugzilla.mozilla.org/show_bug.cgi?id=896116
 esid: pending
 ---*/
 

@@ -2,10 +2,9 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-flags:
-  - noStrict
 description: |
   Map/Set/WeakMap/WeakSet constructor should close iterator on error
+info: bugzilla.mozilla.org/show_bug.cgi?id=1180306
 esid: pending
 ---*/
 

@@ -4,10 +4,9 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   Behavior of __proto__ on ES6 proxies
+info: bugzilla.mozilla.org/show_bug.cgi?id=950407
 esid: pending
 ---*/
 

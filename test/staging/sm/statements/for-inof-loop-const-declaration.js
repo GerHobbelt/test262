@@ -4,10 +4,9 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   Support const declarations in for-of loop heads
+info: bugzilla.mozilla.org/show_bug.cgi?id=1278150
 esid: pending
 ---*/
 

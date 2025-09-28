@@ -2,10 +2,9 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-flags:
-  - noStrict
 description: |
   Object accessors should have get prefix
+info: bugzilla.mozilla.org/show_bug.cgi?id=1180290
 esid: pending
 ---*/
 

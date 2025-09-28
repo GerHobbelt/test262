@@ -3,11 +3,10 @@
 
 /*---
 includes: [compareArray.js]
-flags:
-  - noStrict
 description: |
   pending
 esid: pending
+features: [json-parse-with-source]
 ---*/
 
 (function checkJSONParseWithSource() {
@@ -120,11 +119,12 @@ esid: pending
     assert.sameValue(obj.rawJSON, "false");
 })();
 
-(function checkErrorsComeFromCorrectRealm() {
+// Check errors come from correct realm.
+{
     const otherGlobal = $262.createRealm().global;
     assert.sameValue(TypeError !== otherGlobal.TypeError, true);
 
-    assertErrorComesFromCorrectRealm = (fun, thisRealmType) => {
+    let assertErrorComesFromCorrectRealm = (fun, thisRealmType) => {
         assert.throws(thisRealmType, () => fun(this),
             `${thisRealmType.name} should come from this realm.`);
         assert.throws(otherGlobal[thisRealmType.name], () => fun(otherGlobal),
@@ -141,5 +141,4 @@ esid: pending
     assertErrorComesFromCorrectRealm((gbl) => gbl.JSON.rawJSON('123\n'), SyntaxError);
     assertErrorComesFromCorrectRealm((gbl) => gbl.JSON.rawJSON('\t123'), SyntaxError);
     assertErrorComesFromCorrectRealm((gbl) => gbl.JSON.rawJSON(''), SyntaxError);
-})();
-
+}

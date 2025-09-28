@@ -4,10 +4,9 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   Properly implement the spec's distinctions between StatementListItem and Statement grammar productions and their uses
+info: bugzilla.mozilla.org/show_bug.cgi?id=1288459
 esid: pending
 ---*/
 

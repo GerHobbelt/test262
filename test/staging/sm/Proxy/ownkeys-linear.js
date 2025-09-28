@@ -4,10 +4,9 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   Scripted proxies' [[OwnPropertyKeys]] should have linear complexity
+info: bugzilla.mozilla.org/show_bug.cgi?id=1257779
 esid: pending
 ---*/
 

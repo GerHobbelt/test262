@@ -2,10 +2,9 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-flags:
-  - noStrict
 description: |
   String.raw
+info: bugzilla.mozilla.org/show_bug.cgi?id=1039774
 esid: pending
 ---*/
 

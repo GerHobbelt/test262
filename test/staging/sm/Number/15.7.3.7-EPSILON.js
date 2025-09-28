@@ -4,10 +4,9 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   Number.EPSILON
+info: bugzilla.mozilla.org/show_bug.cgi?id=885798
 esid: pending
 ---*/
 

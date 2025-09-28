@@ -2,10 +2,9 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-flags:
-  - noStrict
 description: |
   sticky flag should not break assertion behavior.
+info: bugzilla.mozilla.org/show_bug.cgi?id=773687
 esid: pending
 ---*/
 

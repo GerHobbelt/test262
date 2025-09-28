@@ -2,10 +2,9 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-flags:
-  - noStrict
 description: |
   String.prototype.split should call ToUint32(limit) before ToString(separator).
+info: bugzilla.mozilla.org/show_bug.cgi?id=1287525
 esid: pending
 ---*/
 

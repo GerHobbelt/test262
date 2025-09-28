@@ -2,10 +2,9 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-flags:
-  - noStrict
 description: |
   Null in character class in RegExp with unicode flag.
+info: bugzilla.mozilla.org/show_bug.cgi?id=1279467
 esid: pending
 ---*/
 

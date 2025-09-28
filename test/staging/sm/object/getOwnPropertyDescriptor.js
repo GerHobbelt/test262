@@ -5,10 +5,9 @@
 
 /*---
 includes: [deepEqual.js]
-flags:
-  - noStrict
 description: |
   Coerce the argument passed to Object.getOwnPropertyDescriptor using ToObject
+info: bugzilla.mozilla.org/show_bug.cgi?id=1079188
 esid: pending
 features: [Symbol]
 ---*/

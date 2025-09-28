@@ -4,10 +4,9 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   Object.isFrozen() should return true when given primitive values as input
+info: bugzilla.mozilla.org/show_bug.cgi?id=1071464
 esid: pending
 features: [Symbol]
 ---*/

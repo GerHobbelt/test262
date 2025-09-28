@@ -4,10 +4,9 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   Various tests of ToNumber(string), particularly +"0x" being NaN
+info: bugzilla.mozilla.org/show_bug.cgi?id=872853
 esid: pending
 ---*/
 

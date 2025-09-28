@@ -5,10 +5,9 @@
 
 /*---
 includes: [sm/non262-TypedArray-shell.js]
-flags:
-  - noStrict
 description: |
   Typed array element-setting should convert to target type using ToNumber followed by an element-type-specific truncation function
+info: bugzilla.mozilla.org/show_bug.cgi?id=985733
 esid: pending
 ---*/
 

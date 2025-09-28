@@ -3,10 +3,9 @@
 
 /*---
 includes: [sm/non262-TypedArray-shell.js]
-flags:
-  - noStrict
 description: |
   Typed array prototypes/constructors should be largely empty, inheriting most functionality from %TypedArray% and %TypedArray%.prototype
+info: bugzilla.mozilla.org/show_bug.cgi?id=896116
 esid: pending
 ---*/
 

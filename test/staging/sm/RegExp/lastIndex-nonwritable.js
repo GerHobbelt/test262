@@ -2,10 +2,9 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-flags:
-  - noStrict
 description: |
   Regexp.prototype.test/exec shouldn't change lastIndex if not writable.
+info: bugzilla.mozilla.org/show_bug.cgi?id=1168416
 esid: pending
 ---*/
 
