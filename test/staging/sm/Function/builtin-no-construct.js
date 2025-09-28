@@ -4,19 +4,15 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   pending
 esid: pending
 ---*/
+
 function checkMethod(method) {
-    try {
+    assert.throws(TypeError, function() {
         new method();
-        assert.sameValue(0, 1, "not reached " + method);
-    } catch (e) {
-        assert.sameValue(e.message.indexOf(" is not a constructor") === -1, false);
-    }
+    });
 }
 
 function checkMethods(proto) {
@@ -54,4 +50,3 @@ var builtin_funcs = [
 for (var i = 0; i < builtin_funcs.length; i++) {
     checkMethod(builtin_funcs[i]);
 }
-

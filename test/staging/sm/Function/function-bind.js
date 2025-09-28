@@ -180,11 +180,9 @@ assert.sameValue(one.bind(null, 1, 2).length, 0);
 
 // retch
 var br = Object.create(null, { length: { value: 0 } });
-try
-{
-  br = bind.call(/a/g, /a/g, "aaaa");
-}
-catch (e) { /* nothing */ }
+assert.throws(TypeError, function() {
+  bind.call(/a/g, /a/g, "aaaa");
+});
 assert.sameValue(br.length, 0);
 
 
@@ -247,7 +245,7 @@ function testBound(fun)
 testBound(strict);
 testBound(nonstrict);
 
-assertNativeFunction((function unbound(){"body"}).bind());
+assertNativeFunction(function unbound(){"body"}.bind());
 
 /* 22. Return F. */
 var passim = function p(){}.bind(1);

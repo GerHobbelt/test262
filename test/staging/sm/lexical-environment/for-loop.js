@@ -13,16 +13,9 @@ esid: pending
 
 function isError(code, type)
 {
-  try
-  {
+  assert.throws(type, function() {
     Function(code);
-    throw new Error("didn't throw");
-  }
-  catch (e)
-  {
-    assert.sameValue(e instanceof type, true,
-             "unexpected error for `" + code + "`: got " + e);
-  }
+  });
 }
 
 function isOK(code)
@@ -33,8 +26,8 @@ function isOK(code)
 isError("for (const x; ; ) ;", SyntaxError);
 isError("for (const x = 5, y; ; ) ;", SyntaxError);
 isError("for (const [z]; ; ) ;", SyntaxError);
-//isError("for (const [z, z]; ; ) ;", SyntaxError);
-//isError("for (const [z, z] = [0, 1]; ; ) ;", SyntaxError);
+isError("for (const [z, z]; ; ) ;", SyntaxError);
+isError("for (const [z, z] = [0, 1]; ; ) ;", SyntaxError);
 
 isOK("for (let x; ; ) ;");
 isOK("for (let x = 5, y; ; ) ;");

@@ -4,11 +4,10 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   new DataView(...) shouldn't misbehave horribly if index-argument conversion detaches the ArrayBuffer to be viewed
 esid: pending
+features: [host-gc-required]
 ---*/
 
 function testByteOffset()
@@ -25,16 +24,9 @@ function testByteOffset()
       }
     };
 
-  var ok = false;
-  try
-  {
+  assert.throws(TypeError, function() {
     new DataView(ab, start);
-  }
-  catch (e)
-  {
-    ok = true;
-  }
-  assert.sameValue(ok, true, "byteOffset weirdness should have thrown");
+  }, "byteOffset weirdness should have thrown");
   assert.sameValue(ab.byteLength, 0, "detaching should work for byteOffset weirdness");
 }
 testByteOffset();
@@ -53,16 +45,9 @@ function testByteLength()
       }
     };
 
-  var ok = false;
-  try
-  {
+  assert.throws(TypeError, function() {
     new DataView(ab, 0x800, len);
-  }
-  catch (e)
-  {
-    ok = true;
-  }
-  assert.sameValue(ok, true, "byteLength weirdness should have thrown");
+  }, "byteLength weirdness should have thrown");
   assert.sameValue(ab.byteLength, 0, "detaching should work for byteLength weirdness");
 }
 testByteLength();

@@ -8,6 +8,7 @@ flags:
 description: |
   pending
 esid: pending
+features: [host-gc-required]
 ---*/
 // This file was written by Andy Wingo <wingo@igalia.com> and originally
 // contributed to V8 as generators-objects.js, available here:
@@ -212,12 +213,10 @@ TestGenerator(
     ["fee", "fi", "fo", "fum", undefined]);
 
 // GC.
-if (typeof gc == 'function') {
-    TestGenerator(function* g16() { yield "baz"; $262.gc(); yield "qux"; },
-                  ["baz", "qux", undefined],
-                  "foo",
-                  ["baz", "qux", undefined]);
-}
+TestGenerator(function* g16() { yield "baz"; $262.gc(); yield "qux"; },
+              ["baz", "qux", undefined],
+              "foo",
+              ["baz", "qux", undefined]);
 
 // Receivers.
 TestGenerator(
@@ -229,19 +228,6 @@ TestGenerator(
     [1, 2, undefined],
     "foo",
     [1, 2, undefined]);
-
-// FIXME: Capture the generator object as "this" in new g().  Bug 907742.
-// TestGenerator(
-//     function g18() {
-//         function* g() { yield this.x; yield this.y; }
-//         var iter = new g;
-//         iter.x = 1;
-//         iter.y = 2;
-//         return iter;
-//     },
-//     [1, 2, undefined],
-//     "foo",
-//     [1, 2, undefined]);
 
 TestGenerator(
     function* g19() {

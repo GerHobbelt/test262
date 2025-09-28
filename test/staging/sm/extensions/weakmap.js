@@ -4,57 +4,22 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   js weak maps
 esid: pending
+features: [host-gc-required]
 ---*/
 
 test();
 
 function test()
 {
-    var TestPassCount = 0;
-    var TestFailCount = 0;
-    var TestTodoCount = 0;
-
-    var TODO = 1;
-
-    function check(fun, todo) {
-        var thrown = null;
-        var success = false;
-        try {
-            success = fun();
-        } catch (x) {
-            thrown = x;
-        }
-
-        if (thrown)
-            success = false;
-
-        if (todo) {
-            TestTodoCount++;
-
-            return;
-        }
-
-        if (success) {
-            TestPassCount++;
-        } else {
-            TestFailCount++;
-        }
+    function check(fun) {
+        assert.sameValue(fun(), true);
     }
 
-    function checkThrows(fun, todo) {
-        let thrown = false;
-        try {
-            fun();
-        } catch (x) {
-            thrown = true;
-        }
-
-        check(() => thrown, todo);
+    function checkThrows(fun) {
+        assert.throws(TypeError, fun);
     }
 
     var key = {};
@@ -93,6 +58,4 @@ function test()
     check(() => map.get(key) == undefined);
 
     checkThrows(() => map.set("non-object key", value));
-
-    assert.sameValue(0, TestFailCount, "weak map tests");
 }

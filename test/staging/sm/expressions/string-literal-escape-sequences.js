@@ -4,8 +4,6 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   \\u and \\x must be followed by the appropriate number of hex digits or else it is a syntax error
 esid: pending
@@ -13,15 +11,9 @@ esid: pending
 
 function expectSyntaxError(str)
 {
-  try
-  {
+  assert.throws(SyntaxError, function() {
     eval(str);
-  }
-  catch (e)
-  {
-    assert.sameValue(e instanceof SyntaxError, true,
-             "no syntax error evaluating " + str);
-  }
+  }, "syntax error evaluating " + str);
 }
 
 expectSyntaxError('"\\x"');

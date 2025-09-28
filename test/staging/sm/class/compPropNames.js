@@ -3,8 +3,6 @@
 
 /*---
 includes: [sm/assertThrowsValue.js]
-flags:
-  - noStrict
 description: |
   Computed Property Names
 esid: pending
@@ -12,14 +10,9 @@ esid: pending
 
 // Function definitions.
 function syntaxError (script) {
-    try {
+    assert.throws(SyntaxError, function() {
         Function(script);
-    } catch (e) {
-        if (e instanceof SyntaxError) {
-            return;
-        }
-    }
-    throw new Error('Expected syntax error: ' + script);
+    });
 }
 
 
@@ -76,13 +69,13 @@ syntaxError("({[if (0) 0;]})");  // much less a Statement
 syntaxError("function f() { {[x]: 1} }");  // that's not even an ObjectLiteral
 syntaxError("function f() { [x]: 1 }");    // or that
 syntaxError('a = {[f1@]: "a", [f2]: "b"}'); // unexpected symbol at end of AssignmentExpression
-try { JSON.parse('{["a"]:4}'); } catch(e) {
-    if (!(e instanceof SyntaxError)) throw new Error('Expected syntax error');
-}
+assert.throws(SyntaxError, function() {
+    JSON.parse('{["a"]:4}');
+});
 
 // Property characteristics.
 a = { ["b"] : 4 };
-b = Object.getOwnPropertyDescriptor(a, "b");
+var b = Object.getOwnPropertyDescriptor(a, "b");
 assert.sameValue(b.configurable, true);
 assert.sameValue(b.enumerable, true);
 assert.sameValue(b.writable, true);
@@ -227,7 +220,7 @@ assert.sameValue(a[expr], 5);
 assertThrowsValue(() => { a[expr] = 7; }, 4);
 
 // expressions with side effects are called in the right order
-log = "";
+var log = "";
 obj = {
     "a": log += 'a',
     get [log += 'b']() {},

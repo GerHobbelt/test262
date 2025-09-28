@@ -2,8 +2,6 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-flags:
-  - noStrict
 description: |
   Method Definitions - Generators
 esid: pending
@@ -11,14 +9,9 @@ esid: pending
 
 // Function definitions.
 function syntaxError (script) {
-    try {
+    assert.throws(SyntaxError, function() {
         Function(script);
-    } catch (e) {
-        if (e instanceof SyntaxError) {
-            return;
-        }
-    }
-    throw new Error('Expected syntax error: ' + script);
+    });
 }
 
 
@@ -56,7 +49,7 @@ syntaxError("b = {a :* 1}");
 syntaxError("b = {a*(){}}");
 
 // Generator methods.
-b = { * g() {
+var b = { * g() {
     var a = { [yield 1]: 2, [yield 2]: 3};
     return a;
 } }
@@ -76,7 +69,7 @@ assert.sameValue(next.value.world, 3);
 assert.sameValue(b.g.hasOwnProperty("prototype"), true);
 
 // Strict mode
-a = {*b(c){"use strict";yield c;}};
+var a = {*b(c){"use strict";yield c;}};
 assert.sameValue(a.b(1).next().value, 1);
 a = {*["b"](c){"use strict";return c;}};
 assert.sameValue(a.b(1).next().value, 1);

@@ -4,11 +4,10 @@
  */
 
 /*---
-flags:
-  - noStrict
 description: |
   Uint8Array.prototype.set issues when this array changes during setting
 esid: pending
+features: [host-gc-required]
 ---*/
 
 var ab = new ArrayBuffer(200);
