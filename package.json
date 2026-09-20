@@ -16,7 +16,6 @@
     "test262-harness": "^8.0.0"
   },
   "scripts": {
-    "ci": "./tools/scripts/ci_test.sh",
     "test": "test262-harness",
     "pub": "npm publish --access public",
     "diff": "git diff --diff-filter ACMR --name-only main.. -- test/ && git ls-files --exclude-standard --others -- test/",
